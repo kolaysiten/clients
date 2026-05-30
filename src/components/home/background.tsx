@@ -7,7 +7,7 @@ export default function HomeBackground() {
 }
 
 const backgroundStyles = {
-  shell: "pointer-events-none absolute inset-0 z-0 overflow-hidden bg-[#f6f3ee]",
+  shell: "pointer-events-none absolute inset-0 z-0 overflow-hidden bg-[#f7f9fc]",
   texture:
-    "absolute inset-0 bg-gradient-to-br from-white/75 via-white/20 to-emerald-50/70",
+    "absolute inset-0 bg-gradient-to-br from-white/70 via-[#f7f9fc] to-slate-100/70",
 };

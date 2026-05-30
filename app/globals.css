@@ -2,26 +2,103 @@
 
 :root {
   color-scheme: light;
-  background-color: #f6f3ee;
+  background-color: #9fb9dc;
   color: #111827;
-  --site-bg: #f6f3ee;
+  --site-bg: #9fb9dc;
+  --site-surface: #eceff3;
   --site-text: #111827;
   --site-muted: #6b7280;
   --site-header: #08111f;
+  --site-page-gutter: 16px;
+  --site-content-max: 88rem; 
+  --site-header-top: 16px;
+  --site-header-height: 64px;
+  --site-content-top: calc(var(--site-header-top) + (var(--site-header-height) / 2));
+  --site-header-guard-height: var(--site-content-top);
 }
 
 html {
   min-width: 320px;
   background-color: var(--site-bg);
+  scrollbar-gutter: stable;
 }
 
 body {
   min-height: 100vh;
   background-color: var(--site-bg);
   color: var(--site-text);
+  overflow-x: hidden;
 }
 
 ::selection {
   background-color: rgba(8, 17, 31, 0.16);
   color: var(--site-text);
 }
+
+.site-scroll-proxy {
+  height: var(--site-proxy-height, 100svh);
+  min-height: 100svh;
+}
+
+.site-content-shell {
+  --site-scroll-y: 0px;
+  position: fixed;
+  inset: var(--site-content-top) var(--site-page-gutter) var(--site-page-gutter);
+  z-index: 10;
+  width: min(calc(100vw - (var(--site-page-gutter) * 2)), var(--site-content-max));
+  margin-inline: auto;
+  background: var(--site-surface);
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 16px; 
+}
+
+.site-content-scroll {
+  min-height: 100%;
+  background: var(--site-surface);
+  transform: translate3d(0, calc(var(--site-scroll-y) * -1), 0);
+  will-change: transform;
+}
+
+.site-header-guard {
+  pointer-events: none;
+  position: fixed;
+  inset-inline: var(--site-page-gutter);
+  top: 0;
+  z-index: 40;
+  height: var(--site-header-guard-height);
+  width: min(calc(100vw - (var(--site-page-gutter) * 2)), var(--site-content-max));
+  margin-inline: auto;
+  background: var(--site-bg);
+  border-bottom-right-radius: 18px;
+  border-bottom-left-radius: 18px;
+  box-shadow: 0 12px 28px rgba(8, 17, 31, 0.05);
+}
+
+.site-content-walls {
+  pointer-events: none;
+  position: fixed;
+  inset: var(--site-content-top) 0 var(--site-page-gutter);
+  z-index: 30;
+}
+
+.site-content-walls::before,
+.site-content-walls::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: max(
+    0px,
+    calc((100vw - min(calc(100vw - (var(--site-page-gutter) * 2)), var(--site-content-max))) / 2)
+  );
+  background: var(--site-bg);
+}
+
+.site-content-walls::before {
+  left: 0;
+}
+
+.site-content-walls::after {
+  right: 0;
+} 

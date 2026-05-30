@@ -15,6 +15,6 @@ export default function Page() {
 }
 
 const pageStyles = {
-  shell: "relative min-h-screen overflow-hidden",
-  content: "relative z-10 mx-auto w-full max-w-6xl px-4 pb-10 pt-[92px] md:px-6 md:pb-14 md:pt-[100px]",
+  shell: "relative min-h-[calc(100svh-var(--site-content-top)-var(--site-page-gutter))] overflow-hidden",
+  content: "relative z-10 w-full px-8 pb-10 pt-16 md:pb-14 md:pt-20",
 };
