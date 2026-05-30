@@ -1,7 +1,15 @@
+import Image from "next/image";
+
 export default function Banner() {
   return (
     <div className={bannerStyles.shell}>
-      <img src="/logo.png" alt="K" className={bannerStyles.mark} />
+      <Image
+        src="/kolaysiten-logo-128.png"
+        alt="K"
+        width={40}
+        height={40}
+        className={bannerStyles.mark}
+      />
       <span className={bannerStyles.text}>
         <span className={bannerStyles.title}>KolaySiten</span>
         <span className={bannerStyles.subtitle}>M. Kayra Freelance</span>

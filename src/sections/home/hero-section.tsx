@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowRight, Palette, Search, Smartphone, Zap } from "lucide-react";
-import { motion, type Variants } from "framer-motion";
+import { LazyMotion, domAnimation, m, type Variants } from "framer-motion";
 import { useMotionSettings } from "@/src/providers/motion-settings";
 
 const featureItems = [
@@ -31,92 +31,94 @@ export default function HeroSection() {
   const { motionEnabled } = useMotionSettings();
 
   return (
-    <motion.section
-      className={heroStyles.shell}
-      initial={motionEnabled ? "hidden" : false}
-      animate="show"
-      variants={heroVariants.section}
-    >
-      <div className={heroStyles.inner}>
-        <div className={heroStyles.main}>
-          <div className={heroStyles.content}>
-            <motion.span className={heroStyles.badge} variants={heroVariants.item}>
-              <span className={heroStyles.badgeDot} />
-              Profesyonel Web Siteleri
-            </motion.span>
+    <LazyMotion features={domAnimation}>
+      <m.section
+        className={heroStyles.shell}
+        initial={motionEnabled ? "hidden" : false}
+        animate="show"
+        variants={heroVariants.section}
+      >
+        <div className={heroStyles.inner}>
+          <div className={heroStyles.main}>
+            <div className={heroStyles.content}>
+              <m.span className={heroStyles.badge} variants={heroVariants.item}>
+                <span className={heroStyles.badgeDot} />
+                Profesyonel Web Siteleri
+              </m.span>
 
-            <motion.h1 className={heroStyles.title} variants={heroVariants.item}>
-              <span className={heroStyles.titleLine}>İşletmeniz için</span>
-              <span className={heroStyles.titleLine}>
-                <span className={heroStyles.titleAccent}>modern</span> web siteleri.
-              </span>
-            </motion.h1>
+              <m.h1 className={heroStyles.title} variants={heroVariants.item}>
+                <span className={heroStyles.titleLine}>İşletmeniz için</span>
+                <span className={heroStyles.titleLine}>
+                  <span className={heroStyles.titleAccent}>modern</span> web siteleri.
+                </span>
+              </m.h1>
 
-            <motion.p className={heroStyles.description} variants={heroVariants.item}>
-              Markanızı dijitale taşıyor, kullanıcı dostu ve performans odaklı web siteleri geliştiriyoruz.
-            </motion.p>
+              <m.p className={heroStyles.description} variants={heroVariants.item}>
+                Markanızı dijitale taşıyor, kullanıcı dostu ve performans odaklı web siteleri geliştiriyoruz.
+              </m.p>
 
-            <motion.div className={heroStyles.actions} variants={heroVariants.item}>
-              <a href="#paketler" className={heroStyles.secondaryAction}>
-                Paketleri İncele
-              </a>
-              <a href="#iletisim" className={heroStyles.primaryAction}>
-                Teklif Al
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </motion.div>
+              <m.div className={heroStyles.actions} variants={heroVariants.item}>
+                <a href="#paketler" className={heroStyles.secondaryAction}>
+                  Paketleri İncele
+                </a>
+                <a href="#iletisim" className={heroStyles.primaryAction}>
+                  Teklif Al
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </m.div>
+            </div>
+
+            <m.div
+              className={heroStyles.visual}
+              variants={heroVariants.visual}
+              aria-hidden="true"
+              initial={motionEnabled ? undefined : false}
+            >
+              <div className={heroStyles.laptop}>
+                <div className={heroStyles.laptopTop}>
+                  <span className={heroStyles.mockBrand}>KolaySiten</span>
+                  <span className={heroStyles.mockButton}>Teklif Al</span>
+                </div>
+                <div className={heroStyles.mockGrid}>
+                  <div className={heroStyles.mockCopy}>
+                    <span className={heroStyles.mockTitle}>Modern web</span>
+                    <span className={heroStyles.mockTitleMuted}>sitesi hazır.</span>
+                    <span className={heroStyles.mockLine} />
+                    <span className={heroStyles.mockLineShort} />
+                  </div>
+                  <div className={heroStyles.mockPreview} />
+                </div>
+              </div>
+
+              <div className={heroStyles.phone}>
+                <span className={heroStyles.phoneNotch} />
+                <span className={heroStyles.phoneTitle}>KolaySiten</span>
+                <span className={heroStyles.phoneText}>Dijitalde güçlü görünüm.</span>
+                <span className={heroStyles.phonePreview} />
+              </div>
+            </m.div>
           </div>
 
-          <motion.div
-            className={heroStyles.visual}
-            variants={heroVariants.visual}
-            aria-hidden="true"
-            initial={motionEnabled ? undefined : false}
-          >
-            <div className={heroStyles.laptop}>
-              <div className={heroStyles.laptopTop}>
-                <span className={heroStyles.mockBrand}>KolaySiten</span>
-                <span className={heroStyles.mockButton}>Teklif Al</span>
-              </div>
-              <div className={heroStyles.mockGrid}>
-                <div className={heroStyles.mockCopy}>
-                  <span className={heroStyles.mockTitle}>Modern web</span>
-                  <span className={heroStyles.mockTitleMuted}>sitesi hazır.</span>
-                  <span className={heroStyles.mockLine} />
-                  <span className={heroStyles.mockLineShort} />
-                </div>
-                <div className={heroStyles.mockPreview} />
-              </div>
-            </div>
+          <m.div className={heroStyles.features} variants={heroVariants.features}>
+            {featureItems.map((item) => {
+              const Icon = item.icon;
 
-            <div className={heroStyles.phone}>
-              <span className={heroStyles.phoneNotch} />
-              <span className={heroStyles.phoneTitle}>KolaySiten</span>
-              <span className={heroStyles.phoneText}>Dijitalde güçlü görünüm.</span>
-              <span className={heroStyles.phonePreview} />
-            </div>
-          </motion.div>
+              return (
+                <m.div key={item.title} className={heroStyles.featureCard} variants={heroVariants.item}>
+                  <span className={heroStyles.featureIcon}>
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <span className={heroStyles.featureText}>
+                    <span className={heroStyles.featureTitle}>{item.title}</span>
+                    <span className={heroStyles.featureDescription}>{item.text}</span>
+                  </span>
+                </m.div>
+              );
+            })}
+          </m.div>
         </div>
-
-        <motion.div className={heroStyles.features} variants={heroVariants.features}>
-          {featureItems.map((item) => {
-            const Icon = item.icon;
-
-            return (
-              <motion.div key={item.title} className={heroStyles.featureCard} variants={heroVariants.item}>
-                <span className={heroStyles.featureIcon}>
-                  <Icon className="h-5 w-5" />
-                </span>
-                <span className={heroStyles.featureText}>
-                  <span className={heroStyles.featureTitle}>{item.title}</span>
-                  <span className={heroStyles.featureDescription}>{item.text}</span>
-                </span>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-      </div>
-    </motion.section>
+      </m.section>
+    </LazyMotion>
   );
 }
 
@@ -161,7 +163,7 @@ const heroStyles = {
     "mt-8 block h-24 rounded-lg bg-[linear-gradient(135deg,#ded6ca_0%,#f9f4eb_45%,#b98554_46%,#7a4a2c_63%,#ded6ca_64%)]",
   features: "mt-10 grid gap-3 grid-cols-1 md:mt-14 md:grid-cols-2 xl:grid-cols-4",
   featureCard:
-    "flex items-start gap-4 rounded-lg border border-white/70 bg-white/70 p-4 shadow-[0_12px_35px_rgba(8,17,31,0.06)] backdrop-blur",
+    "flex items-start gap-4 rounded-lg border border-white/70 bg-white/85 p-4 shadow-[0_10px_28px_rgba(8,17,31,0.05)]",
   featureIcon:
     "flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-700",
   featureText: "flex min-w-0 flex-col",
@@ -174,24 +176,24 @@ const heroVariants = {
     hidden: {},
     show: {
       transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.08,
+        staggerChildren: 0.07,
+        delayChildren: 0.04,
       },
     },
   },
   item: {
-    hidden: { opacity: 0, y: 18 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.68, ease: "easeOut" as const } },
+    hidden: { opacity: 0, y: 12 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.42, ease: "easeOut" as const } },
   },
   visual: {
-    hidden: { opacity: 0, y: 28, scale: 0.97 },
-    show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.82, ease: "easeOut" as const } },
+    hidden: { opacity: 0, y: 18 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
   },
   features: {
     hidden: {},
     show: {
       transition: {
-        staggerChildren: 0.08,
+        staggerChildren: 0.05,
       },
     },
   },
