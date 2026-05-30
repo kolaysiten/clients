@@ -1,5 +1,6 @@
 import HeroSection from "@/src/sections/home/hero-section";
 import HomeBackground from "@/src/components/home/background";
+import WhySection from "@/src/sections/home/why-section";
 
 export default function Page() {
   return (
@@ -7,6 +8,7 @@ export default function Page() {
       <HomeBackground />
       <div className={pageStyles.content}>
         <HeroSection />
+        <WhySection />
       </div>
     </main>
   );
