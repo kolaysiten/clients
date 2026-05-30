@@ -32,7 +32,7 @@ export default function Header() {
 }
 
 const headerStyles = {
-  guard: "site-header-guard",
+  guard: "pointer-events-none fixed inset-x-0 top-0 z-40 h-[var(--site-header-guard-height)] bg-[var(--site-bg)]",
   shell:
     "fixed left-1/2 top-[var(--site-header-top)] z-50 w-[min(calc(100vw-(var(--site-page-gutter)*2)),var(--site-content-max))] -translate-x-1/2",
   inner: "grid h-16 w-full items-center overflow-hidden rounded-2xl border border-white/10 bg-[#08111f] px-4",
