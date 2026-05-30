@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowRight, Palette, Search, Smartphone, Zap } from "lucide-react";
 import { LazyMotion, domAnimation, m, type Variants } from "framer-motion";
 import { useMotionSettings } from "@/src/providers/motion-settings";
@@ -74,28 +75,14 @@ export default function HeroSection() {
               aria-hidden="true"
               initial={motionEnabled ? undefined : false}
             >
-              <div className={heroStyles.laptop}>
-                <div className={heroStyles.laptopTop}>
-                  <span className={heroStyles.mockBrand}>KolaySiten</span>
-                  <span className={heroStyles.mockButton}>Teklif Al</span>
-                </div>
-                <div className={heroStyles.mockGrid}>
-                  <div className={heroStyles.mockCopy}>
-                    <span className={heroStyles.mockTitle}>Modern web</span>
-                    <span className={heroStyles.mockTitleMuted}>sitesi hazır.</span>
-                    <span className={heroStyles.mockLine} />
-                    <span className={heroStyles.mockLineShort} />
-                  </div>
-                  <div className={heroStyles.mockPreview} />
-                </div>
-              </div>
-
-              <div className={heroStyles.phone}>
-                <span className={heroStyles.phoneNotch} />
-                <span className={heroStyles.phoneTitle}>KolaySiten</span>
-                <span className={heroStyles.phoneText}>Dijitalde güçlü görünüm.</span>
-                <span className={heroStyles.phonePreview} />
-              </div>
+              <Image
+                src="/hero-mockup2.png"
+                alt=""
+                width={465}
+                height={465}
+                priority
+                className={heroStyles.artwork}
+              />
             </m.div>
           </div>
 
@@ -141,26 +128,9 @@ const heroStyles = {
     "inline-flex h-[52px] min-h-[52px] w-full items-center justify-center gap-2 rounded-lg bg-[#08111f] px-6 text-sm font-semibold text-white shadow-[0_16px_35px_rgba(8,17,31,0.2)] transition hover:bg-slate-800 md:w-auto",
   secondaryAction:
     "inline-flex h-[52px] min-h-[52px] w-full items-center justify-center rounded-lg border border-slate-300 bg-white/80 px-6 text-sm font-semibold text-[#08111f] transition hover:border-slate-400 hover:bg-white md:w-auto",
-  visual: "relative hidden min-h-[360px] xl:block xl:min-h-[470px]",
-  laptop:
-    "absolute right-0 top-10 w-[86%] rotate-[-4deg] rounded-[22px] border-[10px] border-[#07101f] bg-[#fdf9f1] p-7 shadow-[0_28px_65px_rgba(8,17,31,0.32)] lg:top-8 lg:w-[88%]",
-  laptopTop: "mb-16 flex items-center justify-between text-[10px] font-semibold text-[#07101f]",
-  mockBrand: "text-sm",
-  mockButton: "rounded-md bg-[#07101f] px-3 py-2 text-[10px] text-white",
-  mockGrid: "grid grid-cols-[0.85fr_1.15fr] items-end gap-5",
-  mockCopy: "flex flex-col pb-4",
-  mockTitle: "text-3xl font-semibold leading-tight text-[#07101f]",
-  mockTitleMuted: "text-3xl font-semibold leading-tight text-emerald-700",
-  mockLine: "mt-5 h-2 w-36 rounded-full bg-slate-300/70",
-  mockLineShort: "mt-3 h-2 w-24 rounded-full bg-slate-300/70",
-  mockPreview: "h-48 rounded-lg bg-[linear-gradient(135deg,#d8d1c5_0%,#f8f3eb_45%,#b98554_46%,#7a4a2c_62%,#d8d1c5_63%)]",
-  phone:
-    "absolute bottom-2 right-1 w-[34%] min-w-[150px] rounded-[30px] border-[8px] border-[#07101f] bg-[#fdf9f1] px-4 py-7 shadow-[0_24px_60px_rgba(8,17,31,0.3)] lg:right-3",
-  phoneNotch: "absolute left-1/2 top-2 h-3 w-16 -translate-x-1/2 rounded-full bg-[#07101f]",
-  phoneTitle: "block text-xs font-semibold text-[#07101f]",
-  phoneText: "mt-9 block text-xl font-semibold leading-tight text-[#07101f]",
-  phonePreview:
-    "mt-8 block h-24 rounded-lg bg-[linear-gradient(135deg,#ded6ca_0%,#f9f4eb_45%,#b98554_46%,#7a4a2c_63%,#ded6ca_64%)]",
+  visual: "relative hidden min-h-[360px] items-center justify-center xl:flex xl:min-h-[470px]",
+  artwork:
+    "h-auto w-full max-w-[465px] select-none drop-shadow-[0_28px_65px_rgba(8,17,31,0.18)]",
   features: "mt-10 grid gap-3 grid-cols-1 md:mt-14 md:grid-cols-2 xl:grid-cols-4",
   featureCard:
     "flex items-start gap-4 rounded-lg border border-white/70 bg-white/85 p-4 shadow-[0_10px_28px_rgba(8,17,31,0.05)]",
