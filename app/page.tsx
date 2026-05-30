@@ -1,5 +1,5 @@
 import HeroSection from "@/src/sections/home/hero-section";
-import HomeBackground from "@/src/components/home-background";
+import HomeBackground from "@/src/components/home/background";
 
 export default function Page() {
   return (

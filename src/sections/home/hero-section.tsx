@@ -54,12 +54,12 @@ export default function HeroSection() {
             </motion.p>
 
             <motion.div className={heroStyles.actions} variants={heroVariants.item}>
+              <a href="#paketler" className={heroStyles.secondaryAction}>
+                Paketleri İncele
+              </a>
               <a href="#iletisim" className={heroStyles.primaryAction}>
                 Teklif Al
                 <ArrowRight className="h-4 w-4" />
-              </a>
-              <a href="#paketler" className={heroStyles.secondaryAction}>
-                Paketleri İncele
               </a>
             </motion.div>
           </div>
@@ -115,21 +115,23 @@ export default function HeroSection() {
 const heroStyles = {
   shell: "py-6 md:py-8",
   inner: "w-full",
-  main: "grid gap-10 lg:grid-cols-[6fr_4fr] lg:items-center",
-  content: "relative z-10 flex w-full max-w-none flex-col items-start lg:max-w-[46rem]",
+  main: "grid gap-10 xl:grid-cols-[6fr_4fr] xl:items-center",
+  content:
+    "relative z-10 flex w-full max-w-none flex-col items-center text-center xl:w-[592px] xl:items-start xl:text-left",
   badge:
     "inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/85 px-3 py-2 text-sm font-medium text-slate-800 shadow-[0_10px_30px_rgba(8,17,31,0.08)]",
   badgeDot: "h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_0_5px_rgba(16,185,129,0.12)]",
-  title: "mt-7 flex w-max max-w-none flex-col text-4xl font-semibold leading-[0.98] text-[#07101f] sm:text-5xl md:text-6xl",
+  title:
+    "mx-auto mt-7 flex w-full flex-col text-4xl font-semibold leading-[0.98] text-[#07101f] sm:text-5xl md:text-6xl xl:mx-0",
   titleLine: "block whitespace-nowrap",
   titleAccent: "text-emerald-700",
-  description: "mt-6 max-w-xl text-lg leading-8 text-slate-600 md:text-xl",
-  actions: "mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row",
+  description: "mt-6 max-w-xl text-lg leading-8 text-slate-600 md:text-xl xl:max-w-[40rem]",
+  actions: "mt-8 flex w-full flex-col gap-3 md:w-max md:flex-row md:items-center",
   primaryAction:
-    "inline-flex h-[52px] min-h-[52px] items-center justify-center gap-2 rounded-lg bg-[#08111f] px-6 text-sm font-semibold text-white shadow-[0_16px_35px_rgba(8,17,31,0.2)] transition hover:bg-slate-800",
+    "inline-flex h-[52px] min-h-[52px] w-full items-center justify-center gap-2 rounded-lg bg-[#08111f] px-6 text-sm font-semibold text-white shadow-[0_16px_35px_rgba(8,17,31,0.2)] transition hover:bg-slate-800 md:w-auto",
   secondaryAction:
-    "inline-flex h-[52px] min-h-[52px] items-center justify-center rounded-lg border border-slate-300 bg-white/80 px-6 text-sm font-semibold text-[#08111f] transition hover:border-slate-400 hover:bg-white",
-  visual: "relative hidden min-h-[360px] lg:block lg:min-h-[470px]",
+    "inline-flex h-[52px] min-h-[52px] w-full items-center justify-center rounded-lg border border-slate-300 bg-white/80 px-6 text-sm font-semibold text-[#08111f] transition hover:border-slate-400 hover:bg-white md:w-auto",
+  visual: "relative hidden min-h-[360px] xl:block xl:min-h-[470px]",
   laptop:
     "absolute right-0 top-10 w-[86%] rotate-[-4deg] rounded-[22px] border-[10px] border-[#07101f] bg-[#fdf9f1] p-7 shadow-[0_28px_65px_rgba(8,17,31,0.32)] lg:top-8 lg:w-[88%]",
   laptopTop: "mb-16 flex items-center justify-between text-[10px] font-semibold text-[#07101f]",
@@ -149,7 +151,7 @@ const heroStyles = {
   phoneText: "mt-9 block text-xl font-semibold leading-tight text-[#07101f]",
   phonePreview:
     "mt-8 block h-24 rounded-lg bg-[linear-gradient(135deg,#ded6ca_0%,#f9f4eb_45%,#b98554_46%,#7a4a2c_63%,#ded6ca_64%)]",
-  features: "mt-10 grid gap-3 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4",
+  features: "mt-10 grid gap-3 grid-cols-1 md:mt-14 md:grid-cols-2 xl:grid-cols-4",
   featureCard:
     "flex items-start gap-4 rounded-lg border border-white/70 bg-white/70 p-4 shadow-[0_12px_35px_rgba(8,17,31,0.06)] backdrop-blur",
   featureIcon:
