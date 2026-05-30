@@ -1,14 +1,14 @@
 export const navigation = [
   {
-    href: "/ilan-ver",
-    label: "İş Ver",
+    href: "#paketler",
+    label: "Paketler",
   },
   {
-    href: "/is-bul",
-    label: "İş Bul",
+    href: "#surec",
+    label: "Süreç",
   },
   {
-    href: "/nasil-calisir",
-    label: "Nasıl Çalışır",
+    href: "#iletisim",
+    label: "İletişim",
   },
 ];

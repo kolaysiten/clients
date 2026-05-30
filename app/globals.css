@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+:root {
+
+}
+
+html {
+    min-width: 320px;
+}
+
+body {
+    background-color: black;
+}
