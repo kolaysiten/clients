@@ -11,6 +11,6 @@ export default function Header() {
 import Banner from "@/src/components/banner";
 
 const headerStyles = {
-  shell: "sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur",
+  shell: "sticky top-0 z-50 border-b border-slate-200 bg-gray-100/95 backdrop-blur",
   inner: "mx-auto flex h-16 w-full max-w-6xl items-center justify-center px-4",
 };
