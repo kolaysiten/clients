@@ -11,10 +11,10 @@ export default function Banner() {
 }
 
 const bannerStyles = {
-  shell: "inline-flex items-center gap-4 bg-transparent",
+  shell: "inline-flex select-none items-center gap-2 bg-transparent",
   mark:
     "flex h-12 w-12 items-center justify-center rounded-full text-base font-semibold text-white",
   text: "flex flex-col",
-  title: "text-lg font-semibold leading-tight text-slate-950",
-  subtitle: "text-sm leading-tight text-slate-500",
+  title: "text-lg font-semibold leading-tight text-white",
+  subtitle: "text-sm leading-tight text-slate-300",
 };
