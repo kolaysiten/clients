@@ -113,11 +113,10 @@ export default function HeroSection() {
 }
 
 const heroStyles = {
-  shell: "px-4 pb-10 pt-4 md:px-6 md:pb-14 md:pt-6",
-  inner:
-    "mx-auto w-full max-w-6xl overflow-hidden rounded-[28px] border border-white/70 bg-[#fbf7ef] px-5 py-10 shadow-[0_22px_80px_rgba(8,17,31,0.08)] md:px-9 md:py-14 lg:px-12",
+  shell: "py-6 md:py-8",
+  inner: "w-full",
   main: "grid gap-10 lg:grid-cols-[6fr_4fr] lg:items-center",
-  content: "relative z-10 flex w-full max-w-none flex-col items-start lg:max-w-[40rem]",
+  content: "relative z-10 flex w-full max-w-none flex-col items-start lg:max-w-[46rem]",
   badge:
     "inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/85 px-3 py-2 text-sm font-medium text-slate-800 shadow-[0_10px_30px_rgba(8,17,31,0.08)]",
   badgeDot: "h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_0_5px_rgba(16,185,129,0.12)]",
