@@ -12,23 +12,11 @@ type ScrollMetrics = {
   viewportHeight: number;
 };
 
-type ShellStyle = CSSProperties & {
-  "--site-proxy-height": string;
-  "--site-viewport-height": string;
-};
-
-function getVisualViewportHeight() {
-  return window.visualViewport?.height ?? window.innerHeight;
-}
-
 export default function ContentScrollShell({ children }: ContentScrollShellProps) {
   const shellRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const metricsRef = useRef<ScrollMetrics>({ contentHeight: 0, viewportHeight: 0 });
-  const [shellStyle, setShellStyle] = useState<ShellStyle>({
-    "--site-proxy-height": "100svh",
-    "--site-viewport-height": "100svh",
-  });
+  const [proxyHeight, setProxyHeight] = useState("100svh");
 
   useEffect(() => {
     let animationFrame = 0;
@@ -68,27 +56,13 @@ export default function ContentScrollShell({ children }: ContentScrollShellProps
       const contentHeight = content.scrollHeight;
       const frameOffset = Math.max(0, window.innerHeight - viewportHeight);
       const nextProxyHeight = `${Math.ceil(Math.max(window.innerHeight, contentHeight + frameOffset))}px`;
-      const nextViewportHeight = `${Math.ceil(getVisualViewportHeight())}px`;
 
       metricsRef.current = { contentHeight, viewportHeight };
-      setShellStyle((currentStyle) => {
-        if (
-          currentStyle["--site-proxy-height"] === nextProxyHeight &&
-          currentStyle["--site-viewport-height"] === nextViewportHeight
-        ) {
-          return currentStyle;
-        }
-
-        return {
-          "--site-proxy-height": nextProxyHeight,
-          "--site-viewport-height": nextViewportHeight,
-        };
-      });
+      setProxyHeight((currentHeight) => (currentHeight === nextProxyHeight ? currentHeight : nextProxyHeight));
       scheduleScrollSync();
     };
 
     const resizeObserver = new ResizeObserver(measure);
-    const visualViewport = window.visualViewport;
 
     if (shellRef.current) {
       resizeObserver.observe(shellRef.current);
@@ -102,15 +76,11 @@ export default function ContentScrollShell({ children }: ContentScrollShellProps
 
     window.addEventListener("resize", measure);
     window.addEventListener("scroll", scheduleScrollSync, { passive: true });
-    visualViewport?.addEventListener("resize", measure);
-    visualViewport?.addEventListener("scroll", measure);
 
     return () => {
       resizeObserver.disconnect();
       window.removeEventListener("resize", measure);
       window.removeEventListener("scroll", scheduleScrollSync);
-      visualViewport?.removeEventListener("resize", measure);
-      visualViewport?.removeEventListener("scroll", measure);
 
       if (animationFrame) {
         window.cancelAnimationFrame(animationFrame);
@@ -151,8 +121,8 @@ export default function ContentScrollShell({ children }: ContentScrollShellProps
   }, []);
 
   return (
-    <div style={shellStyle}>
-      <div className={styles.proxy} />
+    <>
+      <div className={styles.proxy} style={{ "--site-proxy-height": proxyHeight } as CSSProperties} />
       <div aria-hidden="true" className={styles.walls}>
         <div className={styles.wall} />
         <div className={styles.gap} />
@@ -163,7 +133,7 @@ export default function ContentScrollShell({ children }: ContentScrollShellProps
           {children}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -173,6 +143,6 @@ const styles = {
   wall: "h-full flex-1 bg-[var(--site-bg)]",
   gap: "h-full w-[min(calc(100vw-(var(--site-page-gutter)*2)),var(--site-content-max))]",
   shell:
-    "fixed left-[var(--site-page-gutter)] right-[var(--site-page-gutter)] top-[var(--site-content-top)] z-10 mx-auto h-[calc(var(--site-viewport-height)-var(--site-content-top))] w-[min(calc(100vw-(var(--site-page-gutter)*2)),var(--site-content-max))] overflow-hidden rounded-none bg-[var(--site-surface)] isolate [--site-scroll-y:0px]",
+    "fixed bottom-0 left-[var(--site-page-gutter)] right-[var(--site-page-gutter)] top-[var(--site-content-top)] z-10 mx-auto w-[min(calc(100vw-(var(--site-page-gutter)*2)),var(--site-content-max))] overflow-hidden rounded-none bg-[var(--site-surface)] isolate [--site-scroll-y:0px]",
   content: "min-h-full bg-[var(--site-surface)] translate-y-[calc(var(--site-scroll-y)*-1)] will-change-transform",
 } as const;
