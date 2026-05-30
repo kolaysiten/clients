@@ -5,6 +5,29 @@ import { ArrowRight, Palette, Search, Smartphone, Zap } from "lucide-react";
 import { LazyMotion, domAnimation, m, type Variants } from "framer-motion";
 import { useMotionSettings } from "@/src/providers/motion-settings";
 
+const badgeItems = [
+  {
+    label: "Sıfırdan özel tasarım",
+    dotClass: "bg-emerald-500 shadow-[0_0_0_5px_rgba(16,185,129,0.12)]",
+  },
+  {
+    label: "Modern ve hızlı siteler",
+    dotClass: "bg-sky-500 shadow-[0_0_0_5px_rgba(14,165,233,0.12)]",
+  },
+  {
+    label: "Mobil uyumlu",
+    dotClass: "bg-violet-500 shadow-[0_0_0_5px_rgba(139,92,246,0.12)]",
+  },
+  {
+    label: "SEO hazır",
+    dotClass: "bg-amber-500 shadow-[0_0_0_5px_rgba(245,158,11,0.14)]",
+  },
+  {
+    label: "Temiz yapı",
+    dotClass: "bg-rose-500 shadow-[0_0_0_5px_rgba(244,63,94,0.12)]",
+  },
+] as const;
+
 const featureItems = [
   {
     icon: Smartphone,
@@ -42,10 +65,17 @@ export default function HeroSection() {
         <div className={heroStyles.inner}>
           <div className={heroStyles.main}>
             <div className={heroStyles.content}>
-              <m.span className={heroStyles.badge} variants={heroVariants.item}>
-                <span className={heroStyles.badgeDot} />
-                Profesyonel Web Siteleri
-              </m.span>
+              <m.div className={heroStyles.badgeGrid} variants={heroVariants.item} aria-label="Öne çıkan özellikler">
+                {badgeItems.map((item, index) => (
+                  <span
+                    key={item.label}
+                    className={`${index < 2 ? heroStyles.badgeWide : heroStyles.badgeSmall} ${heroStyles.badgeBase}`}
+                  >
+                    <span className={`${heroStyles.badgeDot} ${item.dotClass}`} />
+                    <span className={heroStyles.badgeText}>{item.label}</span>
+                  </span>
+                ))}
+              </m.div>
 
               <m.h1 className={heroStyles.title} variants={heroVariants.item}>
                 <span className={heroStyles.titleLine}>İşletmeniz için</span>
@@ -115,9 +145,13 @@ const heroStyles = {
   main: "grid gap-10 xl:grid-cols-[6fr_4fr] xl:items-center",
   content:
     "relative z-10 flex w-full max-w-none flex-col items-center text-center xl:w-[592px] xl:items-start xl:text-left",
-  badge:
-    "inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/85 px-3 py-2 text-sm font-medium text-slate-800 shadow-[0_10px_30px_rgba(8,17,31,0.08)]",
-  badgeDot: "h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_0_5px_rgba(16,185,129,0.12)]",
+  badgeGrid: "mx-auto grid w-fit grid-cols-6 gap-2 sm:mx-0 sm:max-w-[470px]",
+  badgeBase:
+    "inline-flex w-full items-center justify-start gap-1.5 whitespace-nowrap rounded-full border border-slate-200 bg-white/85 px-2 py-1.5 text-[10px] font-medium leading-none text-slate-800 shadow-[0_10px_30px_rgba(8,17,31,0.08)] sm:gap-2 sm:px-3 sm:py-2 sm:text-sm sm:leading-normal",
+  badgeWide: "col-span-3",
+  badgeSmall: "col-span-2",
+  badgeDot: "h-2 w-2 shrink-0 rounded-full sm:h-2.5 sm:w-2.5",
+  badgeText: "min-w-0 text-left text-slate-800",
   title:
     "mx-auto mt-7 flex w-full flex-col text-4xl font-semibold leading-[0.98] text-[#07101f] sm:text-5xl md:text-6xl xl:mx-0",
   titleLine: "block whitespace-nowrap",
