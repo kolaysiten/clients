@@ -17,8 +17,25 @@ export default function ContentScrollShell({ children }: ContentScrollShellProps
   const contentRef = useRef<HTMLDivElement>(null);
   const metricsRef = useRef<ScrollMetrics>({ contentHeight: 0, viewportHeight: 0 });
   const [proxyHeight, setProxyHeight] = useState("100svh");
+  const [usesNativeScroll, setUsesNativeScroll] = useState(false);
 
   useEffect(() => {
+    const touchQuery = window.matchMedia("(hover: none) and (pointer: coarse)");
+    const updateScrollMode = () => setUsesNativeScroll(touchQuery.matches);
+
+    updateScrollMode();
+    touchQuery.addEventListener("change", updateScrollMode);
+
+    return () => {
+      touchQuery.removeEventListener("change", updateScrollMode);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (usesNativeScroll) {
+      return;
+    }
+
     let animationFrame = 0;
 
     const syncScroll = () => {
@@ -86,7 +103,7 @@ export default function ContentScrollShell({ children }: ContentScrollShellProps
         window.cancelAnimationFrame(animationFrame);
       }
     };
-  }, []);
+  }, [usesNativeScroll]);
 
   useEffect(() => {
     const keepFocusedElementVisible = (event: FocusEvent) => {
@@ -120,6 +137,16 @@ export default function ContentScrollShell({ children }: ContentScrollShellProps
     };
   }, []);
 
+  if (usesNativeScroll) {
+    return (
+      <div ref={shellRef} className={styles.nativeShell}>
+        <div ref={contentRef} className={styles.nativeContent}>
+          {children}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className={styles.proxy} style={{ "--site-proxy-height": proxyHeight } as CSSProperties} />
@@ -145,4 +172,7 @@ const styles = {
   shell:
     "fixed bottom-0 left-[var(--site-page-gutter)] right-[var(--site-page-gutter)] top-[var(--site-content-top)] z-10 mx-auto w-[min(calc(100vw-(var(--site-page-gutter)*2)),var(--site-content-max))] overflow-hidden rounded-none bg-[var(--site-surface)] isolate [--site-scroll-y:0px]",
   content: "min-h-full bg-[var(--site-surface)] translate-y-[calc(var(--site-scroll-y)*-1)] will-change-transform",
+  nativeShell:
+    "relative z-10 mx-auto mt-[var(--site-content-top)] min-h-[calc(100dvh-var(--site-content-top))] w-[min(calc(100vw-(var(--site-page-gutter)*2)),var(--site-content-max))] bg-[var(--site-surface)]",
+  nativeContent: "min-h-full bg-[var(--site-surface)]",
 } as const;
