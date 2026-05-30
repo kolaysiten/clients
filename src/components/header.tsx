@@ -29,8 +29,9 @@ export default function Header() {
 }
 
 const headerStyles = {
-  shell: "sticky top-0 z-50 h-16 select-none border-b border-white/10 bg-[#08111f]/95 backdrop-blur",
-  inner: "mx-auto grid h-full w-full max-w-6xl items-center px-4",
+  shell: "sticky top-0 z-50 px-3 pt-3",
+  inner:
+    "mx-auto grid h-16 w-full max-w-6xl items-center overflow-hidden rounded-2xl border border-white/10 bg-[#08111f]/95 px-4 backdrop-blur",
   mobileRow: "grid w-full grid-cols-[1fr_auto_1fr] items-center gap-2 md:hidden",
   mobileBanner: "justify-self-center",
   desktopBanner: "hidden md:flex md:justify-start",
