@@ -3,32 +3,36 @@ import Banner from "@/src/components/banner";
 
 export default function Header() {
   return (
-    <header className={headerStyles.shell}>
-      <div className={headerStyles.inner}>
-        <div className={headerStyles.mobileRow}>
-          <button type="button" className={headerStyles.iconButton} aria-label="Menü aç">
-            <Menu className="h-5 w-5" />
-          </button>
+    <>
+      <div className={headerStyles.guard} aria-hidden="true" />
+      <header className={headerStyles.shell}>
+        <div className={headerStyles.inner}>
+          <div className={headerStyles.mobileRow}>
+            <button type="button" className={headerStyles.iconButton} aria-label="Menü aç">
+              <Menu className="h-5 w-5" />
+            </button>
 
-          <div className={headerStyles.mobileBanner}>
-            <Banner />
+            <div className={headerStyles.mobileBanner}>
+              <Banner />
+            </div>
+
+            <button type="button" className={headerStyles.loginButton} aria-label="Giriş yap">
+              <LogIn className="h-4 w-4" />
+              <span>Login</span>
+            </button>
           </div>
 
-          <button type="button" className={headerStyles.loginButton} aria-label="Giriş yap">
-            <LogIn className="h-4 w-4" />
-            <span>Login</span>
-          </button>
+          <div className={headerStyles.desktopBanner}>
+            <Banner />
+          </div>
         </div>
-
-        <div className={headerStyles.desktopBanner}>
-          <Banner />
-        </div>
-      </div>
-    </header>
+      </header>
+    </>
   );
 }
 
 const headerStyles = {
+  guard: "pointer-events-none fixed inset-x-0 top-0 z-40 h-[76px] bg-[#f6f3ee]/95 backdrop-blur-sm",
   shell: "fixed inset-x-3 top-3 z-50",
   inner:
     "mx-auto grid h-16 w-full max-w-6xl items-center overflow-hidden rounded-2xl border border-white/10 bg-[#08111f]/95 px-4 backdrop-blur",
