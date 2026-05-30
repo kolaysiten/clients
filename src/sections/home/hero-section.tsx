@@ -30,6 +30,11 @@ const badgeItems = [
 
 const featureItems = [
   {
+    icon: Palette,
+    title: "Markaya Özel",
+    text: "Sıfırdan kurulum, hazır şablon içermez.",
+  },
+  {
     icon: Smartphone,
     title: "Mobil Uyumlu",
     text: "Tüm ekranlarda net ve rahat deneyim.",
@@ -43,11 +48,6 @@ const featureItems = [
     icon: Search,
     title: "SEO Temeli",
     text: "Arama motorları için düzenli yapı.",
-  },
-  {
-    icon: Palette,
-    title: "Özel Tasarım",
-    text: "Markanıza uygun sade arayüz.",
   },
 ];
 
@@ -157,7 +157,7 @@ const heroStyles = {
   titleLine: "block whitespace-nowrap",
   titleAccent: "text-emerald-700",
   description: "mt-6 max-w-xl text-lg leading-8 text-slate-600 md:text-xl xl:max-w-[40rem]",
-  actions: "mt-8 flex w-full flex-col gap-3 md:w-max md:flex-row md:items-center",
+  actions: "mt-8 flex w-full flex-col gap-3 md:flex-row md:items-center md:justify-center xl:w-full xl:justify-end",
   primaryAction:
     "inline-flex h-[52px] min-h-[52px] w-full items-center justify-center gap-2 rounded-lg bg-[#08111f] px-6 text-sm font-semibold text-white shadow-[0_16px_35px_rgba(8,17,31,0.2)] transition hover:bg-slate-800 md:w-auto",
   secondaryAction:
@@ -167,12 +167,12 @@ const heroStyles = {
     "h-auto w-full max-w-[465px] select-none drop-shadow-[0_28px_65px_rgba(8,17,31,0.18)]",
   features: "mt-10 grid gap-3 grid-cols-1 md:mt-14 md:grid-cols-2 xl:grid-cols-4",
   featureCard:
-    "flex items-start gap-4 rounded-lg border border-white/70 bg-white/85 p-4 shadow-[0_10px_28px_rgba(8,17,31,0.05)]",
+    "group flex items-start gap-4 rounded-lg border border-white/70 bg-white/85 p-4 shadow-[0_10px_28px_rgba(8,17,31,0.05)] transition duration-300 ease-out hover:-translate-y-0.5 hover:border-slate-200 hover:bg-white hover:shadow-[0_18px_40px_rgba(8,17,31,0.09)]",
   featureIcon:
-    "flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-700",
+    "flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-700 transition duration-300 ease-out group-hover:scale-105 group-hover:bg-emerald-100",
   featureText: "flex min-w-0 flex-col",
-  featureTitle: "text-sm font-semibold text-[#07101f]",
-  featureDescription: "mt-1 text-sm leading-6 text-slate-600",
+  featureTitle: "text-sm font-semibold text-[#07101f] transition duration-300 ease-out group-hover:text-emerald-800",
+  featureDescription: "mt-1 text-sm leading-6 text-slate-600 transition duration-300 ease-out group-hover:text-slate-700",
 };
 
 const heroVariants = {
