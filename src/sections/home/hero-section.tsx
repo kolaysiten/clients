@@ -76,7 +76,7 @@ export default function HeroSection() {
               initial={motionEnabled ? undefined : false}
             >
               <Image
-                src="/hero-mockup2.png"
+                src="/hero-mockup3.png"
                 alt=""
                 width={465}
                 height={465}
