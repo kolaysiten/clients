@@ -16,5 +16,5 @@ export default function Page() {
 
 const pageStyles = {
   shell: "relative min-h-[calc(100svh-var(--site-content-top)-var(--site-page-gutter))] overflow-hidden",
-  content: "relative z-10 w-full px-8 pb-10 pt-16 md:pb-14 md:pt-20",
+  content: "relative z-10 w-full px-16 pb-10 pt-16 md:pb-14 md:pt-20",
 };

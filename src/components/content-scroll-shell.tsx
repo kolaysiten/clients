@@ -122,13 +122,27 @@ export default function ContentScrollShell({ children }: ContentScrollShellProps
 
   return (
     <>
-      <div className="site-scroll-proxy" style={{ "--site-proxy-height": proxyHeight } as CSSProperties} />
-      <div className="site-content-walls" aria-hidden="true" />
-      <div ref={shellRef} className="site-content-shell">
-        <div ref={contentRef} className="site-content-scroll">
+      <div className={styles.proxy} style={{ "--site-proxy-height": proxyHeight } as CSSProperties} />
+      <div aria-hidden="true" className={styles.walls}>
+        <div className={styles.wall} />
+        <div className={styles.gap} />
+        <div className={styles.wall} />
+      </div>
+      <div ref={shellRef} className={styles.shell}>
+        <div ref={contentRef} className={styles.content}>
           {children}
         </div>
       </div>
     </>
   );
 }
+
+const styles = {
+  proxy: "h-[var(--site-proxy-height,100svh)] min-h-[100svh]",
+  walls: "pointer-events-none fixed inset-[var(--site-content-top)_0_var(--site-page-gutter)] z-30 flex",
+  wall: "h-full flex-1 bg-[var(--site-bg)]",
+  gap: "h-full w-[min(calc(100vw-(var(--site-page-gutter)*2)),var(--site-content-max))]",
+  shell:
+    "fixed inset-[var(--site-content-top)_var(--site-page-gutter)_0] z-10 mx-auto w-[min(calc(100vw-(var(--site-page-gutter)*2)),var(--site-content-max))] overflow-hidden rounded-none bg-[var(--site-surface)] isolate [--site-scroll-y:0px]",
+  content: "min-h-full bg-[var(--site-surface)] translate-y-[calc(var(--site-scroll-y)*-1)] will-change-transform",
+} as const;
