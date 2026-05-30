@@ -1,13 +1,27 @@
 @import "tailwindcss";
 
 :root {
-
+  color-scheme: light;
+  background-color: #f6f3ee;
+  color: #111827;
+  --site-bg: #f6f3ee;
+  --site-text: #111827;
+  --site-muted: #6b7280;
+  --site-header: #08111f;
 }
 
 html {
-    min-width: 320px;
+  min-width: 320px;
+  background-color: var(--site-bg);
 }
 
 body {
-    background-color: black;
+  min-height: 100vh;
+  background-color: var(--site-bg);
+  color: var(--site-text);
+}
+
+::selection {
+  background-color: rgba(8, 17, 31, 0.16);
+  color: var(--site-text);
 }

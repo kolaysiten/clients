@@ -15,5 +15,5 @@ const bannerStyles = {
   mark: "h-10 w-10 rounded-full",
   text: "flex flex-col justify-center",
   title: "text-base font-semibold leading-tight text-white md:text-lg",
-  subtitle: "text-xs leading-tight text-slate-300 md:text-sm",
+  subtitle: "text-xs leading-tight text-white/72 md:text-sm",
 };

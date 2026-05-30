@@ -29,13 +29,13 @@ export default function Header() {
 }
 
 const headerStyles = {
-  shell: "sticky top-0 z-50 h-16 select-none border-b border-slate-800/70 bg-slate-950/90 backdrop-blur",
+  shell: "sticky top-0 z-50 h-16 select-none border-b border-white/10 bg-[#08111f]/95 backdrop-blur",
   inner: "mx-auto grid h-full w-full max-w-6xl items-center px-4",
   mobileRow: "grid w-full grid-cols-[1fr_auto_1fr] items-center gap-2 md:hidden",
   mobileBanner: "justify-self-center",
   desktopBanner: "hidden md:flex md:justify-start",
   iconButton:
-    "inline-flex h-9 w-11 items-center justify-center rounded-full border border-slate-700/70 bg-slate-900/80 text-slate-100 transition hover:border-slate-500 hover:bg-slate-800",
+    "inline-flex h-9 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:border-white/20 hover:bg-white/10",
   loginButton:
-    "inline-flex h-9 items-center justify-center justify-self-end gap-1.5 rounded-full border border-slate-700/70 bg-slate-900/80 px-2.5 text-sm font-medium text-slate-100 transition hover:border-slate-500 hover:bg-slate-800",
+    "inline-flex h-9 items-center justify-center justify-self-end gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 text-sm font-medium text-white transition hover:border-white/20 hover:bg-white/10",
 };
