@@ -2,6 +2,7 @@
 
 import { ArrowRight, Palette, Search, Smartphone, Zap } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
+import { useMotionSettings } from "@/src/providers/motion-settings";
 
 const featureItems = [
   {
@@ -27,10 +28,12 @@ const featureItems = [
 ];
 
 export default function HeroSection() {
+  const { motionEnabled } = useMotionSettings();
+
   return (
     <motion.section
       className={heroStyles.shell}
-      initial="hidden"
+      initial={motionEnabled ? "hidden" : false}
       animate="show"
       variants={heroVariants.section}
     >
@@ -64,7 +67,12 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          <motion.div className={heroStyles.visual} variants={heroVariants.visual} aria-hidden="true">
+          <motion.div
+            className={heroStyles.visual}
+            variants={heroVariants.visual}
+            aria-hidden="true"
+            initial={motionEnabled ? undefined : false}
+          >
             <div className={heroStyles.laptop}>
               <div className={heroStyles.laptopTop}>
                 <span className={heroStyles.mockBrand}>KolaySiten</span>
