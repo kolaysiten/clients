@@ -11,10 +11,9 @@ export default function Banner() {
 }
 
 const bannerStyles = {
-  shell: "inline-flex select-none items-center gap-2 bg-transparent",
-  mark:
-    "flex h-12 w-12 items-center justify-center rounded-full text-base font-semibold text-white",
+  shell: "inline-flex select-none items-center gap-2 bg-transparent sm:gap-3 xl:gap-4",
+  mark: "h-10 w-10 rounded-full sm:h-11 sm:w-11 xl:h-11 xl:w-11",
   text: "flex flex-col",
-  title: "text-lg font-semibold leading-tight text-white",
-  subtitle: "text-sm leading-tight text-slate-300",
+  title: "text-base font-semibold leading-tight text-white sm:text-lg xl:text-lg",
+  subtitle: "text-xs leading-tight text-slate-300 sm:text-sm xl:text-sm",
 };
