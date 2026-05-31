@@ -3,7 +3,7 @@
 import { CheckCircle2, Gauge, Layers3, Sparkles } from "lucide-react";
 import { LazyMotion, domAnimation, m, type Variants } from "framer-motion";
 import { useMotionSettings } from "@/src/providers/motion-settings";
-import { LandingSection, WaveDivider } from "@/src/lib/landing-page";
+import { LandingSection } from "@/src/lib/landing-page";
 
 const reasonItems = [
   {
@@ -99,7 +99,7 @@ export default function WhySection() {
 
 const sectionStyles = {
   section:
-    "px-5 py-8 pt-24 text-white before:pointer-events-none before:absolute before:inset-0 before:content-[''] sm:px-8 sm:py-10 sm:pt-28 md:px-16 md:py-14 md:pt-28 xl:40",
+    "px-5 py-8 pt-24 text-white before:pointer-events-none before:absolute before:inset-0 before:content-[''] sm:px-8 sm:py-10 sm:pt-28 md:px-16 md:py-14 md:pt-28 xl:pt-40",
   inner: "relative z-10 mx-auto w-full max-w-[1440px]",
   layout: "grid gap-8 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] xl:items-start",
   copy: "max-w-3xl",
