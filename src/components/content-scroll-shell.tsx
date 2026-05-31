@@ -167,7 +167,7 @@ export default function ContentScrollShell({ children }: ContentScrollShellProps
 const styles = {
   proxy: "h-[var(--site-proxy-height,100svh)] min-h-[100svh]",
   walls: "pointer-events-none fixed inset-[var(--site-content-top)_0_0] z-30 flex",
-  wall: "h-full flex-1 bg-[var(--site-bg)]",
+  wall: "h-full flex-1 bg-transparent",
   gap: "h-full w-[min(calc(100vw-(var(--site-page-gutter)*2)),var(--site-content-max))]",
   shell:
     "fixed bottom-0 left-[var(--site-page-gutter)] right-[var(--site-page-gutter)] top-[var(--site-content-top)] z-10 mx-auto w-[min(calc(100vw-(var(--site-page-gutter)*2)),var(--site-content-max))] overflow-hidden rounded-none bg-[var(--site-surface)] isolate [--site-scroll-y:0px]",

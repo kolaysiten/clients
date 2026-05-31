@@ -11,7 +11,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr">
-      <body>
+      <body className="relative isolate">
+        <div aria-hidden="true" className={layoutStyles.background} />
         <Header />
         <ContentScrollShell>
           <MotionProvider>{children}</MotionProvider>
@@ -21,3 +22,8 @@ export default function RootLayout({
     </html>
   );
 }
+
+const layoutStyles = {
+  background:
+    "pointer-events-none fixed inset-0 z-0 bg-[url('/peak_bg.png')] bg-cover bg-top bg-no-repeat",
+};
