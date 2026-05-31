@@ -56,92 +56,86 @@ export default function HeroSection() {
 
   return (
     <LazyMotion features={domAnimation}>
-      <m.section
-        className={heroStyles.shell}
-        initial={motionEnabled ? "hidden" : false}
-        animate="show"
-        variants={heroVariants.section}
-      >
-        <div className={heroStyles.inner}>
-          <div className={heroStyles.main}>
-            <div className={heroStyles.content}>
-              <m.div className={heroStyles.badgeGrid} variants={heroVariants.item} aria-label="Öne çıkan özellikler">
-                {badgeItems.map((item, index) => (
-                  <span
-                    key={item.label}
-                    className={`${index < 2 ? heroStyles.badgeWide : heroStyles.badgeSmall} ${heroStyles.badgeBase}`}
-                  >
-                    <span className={`${heroStyles.badgeDot} ${item.dotClass}`} />
-                    <span className={heroStyles.badgeText}>{item.label}</span>
-                  </span>
-                ))}
-              </m.div>
-
-              <m.h1 className={heroStyles.title} variants={heroVariants.item}>
-                <span className={heroStyles.titleLine}>İşletmeniz için</span>
-                <span className={heroStyles.titleLine}>
-                  <span className={heroStyles.titleAccent}>modern</span> web siteleri.
+      <>
+        <m.div
+          className={heroStyles.main}
+          initial={motionEnabled ? "hidden" : false}
+          animate="show"
+          variants={heroVariants.section}
+        >
+          <div className={heroStyles.content}>
+            <m.div className={heroStyles.badgeGrid} variants={heroVariants.item} aria-label="Öne çıkan özellikler">
+              {badgeItems.map((item, index) => (
+                <span
+                  key={item.label}
+                  className={`${index < 2 ? heroStyles.badgeWide : heroStyles.badgeSmall} ${heroStyles.badgeBase}`}
+                >
+                  <span className={`${heroStyles.badgeDot} ${item.dotClass}`} />
+                  <span className={heroStyles.badgeText}>{item.label}</span>
                 </span>
-              </m.h1>
+              ))}
+            </m.div>
 
-              <m.p className={heroStyles.description} variants={heroVariants.item}>
-                Markanızı dijitale taşıyor, kullanıcı dostu ve performans odaklı web siteleri geliştiriyoruz.
-              </m.p>
+            <m.h1 className={heroStyles.title} variants={heroVariants.item}>
+              <span className={heroStyles.titleLine}>İşletmeniz için</span>
+              <span className={heroStyles.titleLine}>
+                <span className={heroStyles.titleAccent}>modern</span> web siteleri.
+              </span>
+            </m.h1>
 
-              <m.div className={heroStyles.actions} variants={heroVariants.item}>
-                <a href="#paketler" className={heroStyles.secondaryAction}>
-                  Paketleri İncele
-                </a>
-                <a href="#iletisim" className={heroStyles.primaryAction}>
-                  Teklif Al
-                  <ArrowRight className="h-4 w-4" />
-                </a>
-              </m.div>
-            </div>
+            <m.p className={heroStyles.description} variants={heroVariants.item}>
+              Markanızı dijitale taşıyor, kullanıcı dostu ve performans odaklı web siteleri geliştiriyoruz.
+            </m.p>
 
-            <m.div
-              className={heroStyles.visual}
-              variants={heroVariants.visual}
-              aria-hidden="true"
-              initial={motionEnabled ? undefined : false}
-            >
-              <Image
-                src="/hero-mockup3.png"
-                alt=""
-                width={465}
-                height={465}
-                priority
-                className={heroStyles.artwork}
-              />
+            <m.div className={heroStyles.actions} variants={heroVariants.item}>
+              <a href="#paketler" className={heroStyles.secondaryAction}>
+                Paketleri İncele
+              </a>
+              <a href="#iletisim" className={heroStyles.primaryAction}>
+                Teklif Al
+                <ArrowRight className="h-4 w-4" />
+              </a>
             </m.div>
           </div>
 
-          <m.div className={heroStyles.features} variants={heroVariants.features}>
-            {featureItems.map((item) => {
-              const Icon = item.icon;
-
-              return (
-                <m.div key={item.title} className={heroStyles.featureCard} variants={heroVariants.item}>
-                  <span className={heroStyles.featureIcon}>
-                    <Icon className="h-5 w-5" />
-                  </span>
-                  <span className={heroStyles.featureText}>
-                    <span className={heroStyles.featureTitle}>{item.title}</span>
-                    <span className={heroStyles.featureDescription}>{item.text}</span>
-                  </span>
-                </m.div>
-              );
-            })}
+          <m.div
+            className={heroStyles.visual}
+            variants={heroVariants.visual}
+            aria-hidden="true"
+            initial={motionEnabled ? undefined : false}
+          >
+            <Image src="/hero-mockup3.png" alt="" width={465} height={465} priority className={heroStyles.artwork} />
           </m.div>
-        </div>
-      </m.section>
+        </m.div>
+
+        <m.div
+          className={heroStyles.features}
+          initial={motionEnabled ? "hidden" : false}
+          animate="show"
+          variants={heroVariants.features}
+        >
+          {featureItems.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <m.div key={item.title} className={heroStyles.featureCard} variants={heroVariants.item}>
+                <span className={heroStyles.featureIcon}>
+                  <Icon className="h-5 w-5" />
+                </span>
+                <span className={heroStyles.featureText}>
+                  <span className={heroStyles.featureTitle}>{item.title}</span>
+                  <span className={heroStyles.featureDescription}>{item.text}</span>
+                </span>
+              </m.div>
+            );
+          })}
+        </m.div>
+      </>
     </LazyMotion>
   );
 }
 
 const heroStyles = {
-  shell: "px-5 py-18 sm:px-8 md:px-16 md:pb-24 lg:px-16 xl:pb-32",
-  inner: "w-full",
   main: "grid gap-10 xl:grid-cols-[6fr_4fr] xl:items-center",
   content:
     "relative z-10 flex w-full max-w-none flex-col items-center text-center xl:w-[592px] xl:items-start xl:text-left",

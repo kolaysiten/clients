@@ -32,14 +32,14 @@ export default function WhySection() {
 
   return (
     <LazyMotion features={domAnimation}>
-      <m.section
-        className={sectionStyles.shell}
-        initial={motionEnabled ? "hidden" : false}
-        whileInView={motionEnabled ? "show" : undefined}
-        viewport={motionEnabled ? { once: true, amount: 0.35 } : undefined}
-        variants={sectionVariants.section}
-      >
-        <div className={sectionStyles.inner}>
+      <>
+        <m.div
+          className={sectionStyles.inner}
+          initial={motionEnabled ? "hidden" : false}
+          whileInView={motionEnabled ? "show" : undefined}
+          viewport={motionEnabled ? { once: true, amount: 0.35 } : undefined}
+          variants={sectionVariants.section}
+        >
           <div className={sectionStyles.layout}>
             <m.div className={sectionStyles.copy} variants={sectionVariants.item}>
               <span className={sectionStyles.kicker}>Neden Bu Çözüm?</span>
@@ -87,15 +87,13 @@ export default function WhySection() {
               </div>
             </m.aside>
           </div>
-        </div>
-      </m.section>
+        </m.div>
+      </>
     </LazyMotion>
   );
 }
 
 const sectionStyles = {
-  shell:
-    "relative isolate overflow-hidden bg-[#5d79b3] px-5 py-8 text-white before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.12)_0%,rgba(255,255,255,0)_42%)] before:content-[''] sm:px-8 sm:py-10 md:px-16 md:py-14",
   inner: "relative z-10 mx-auto w-full max-w-[1440px]",
   layout: "grid gap-8 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] xl:items-start",
   copy: "max-w-3xl",
