@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ArrowRight, Palette, Search, Smartphone, Zap } from "lucide-react";
 import { LazyMotion, domAnimation, m, type Variants } from "framer-motion";
 import { useMotionSettings } from "@/src/providers/motion-settings";
+import { LandingSection, WaveDivider } from "@/src/lib/landing-page";
 
 const badgeItems = [
   {
@@ -55,8 +56,16 @@ export default function HeroSection() {
   const { motionEnabled } = useMotionSettings();
 
   return (
-    <LazyMotion features={domAnimation}>
-      <>
+    <LandingSection className={heroStyles.section} sectionBg="var(--site-surface)"
+      slots={{
+        end: {
+          content: <WaveDivider flip={true} />,
+          layout: "outter",
+          size: 76,
+        },
+      }}
+    >
+      <LazyMotion features={domAnimation}>
         <m.div
           className={heroStyles.main}
           initial={motionEnabled ? "hidden" : false}
@@ -130,12 +139,13 @@ export default function HeroSection() {
             );
           })}
         </m.div>
-      </>
-    </LazyMotion>
+      </LazyMotion>
+    </LandingSection>
   );
 }
 
 const heroStyles = {
+  section: "px-5 py-18 sm:px-8 md:px-16 lg:px-16",
   main: "grid gap-10 xl:grid-cols-[6fr_4fr] xl:items-center",
   content:
     "relative z-10 flex w-full max-w-none flex-col items-center text-center xl:w-[592px] xl:items-start xl:text-left",
