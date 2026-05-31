@@ -33,7 +33,7 @@ const featureItems = [
   {
     icon: Palette,
     title: "Markaya Özel",
-    text: "Sıfırdan kurulum, hazır şablon içermez.",
+    text: "İhtiyaca göre hızlı ya da sıfırdan kurulum.",
   },
   {
     icon: Smartphone,
