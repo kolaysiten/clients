@@ -35,36 +35,58 @@ export default function WhySection() {
       <m.section
         className={sectionStyles.shell}
         initial={motionEnabled ? "hidden" : false}
-        animate="show"
+        whileInView={motionEnabled ? "show" : undefined}
+        viewport={motionEnabled ? { once: true, amount: 0.35 } : undefined}
         variants={sectionVariants.section}
       >
         <div className={sectionStyles.inner}>
-          <m.div className={sectionStyles.header} variants={sectionVariants.item}>
-            <span className={sectionStyles.kicker}>Neden Bu Çözüm?</span>
-            <h2 className={sectionStyles.title}>Hazır kalıplar yerine, markaya uygun bir yapı.</h2>
-            <p className={sectionStyles.description}>
-              Amacımız sadece güzel görünen bir sayfa yapmak değil; işletmenizi doğru anlatan, güven veren ve
-              büyümeye uygun bir web deneyimi kurmak.
-            </p>
-          </m.div>
+          <div className={sectionStyles.layout}>
+            <m.div className={sectionStyles.copy} variants={sectionVariants.item}>
+              <span className={sectionStyles.kicker}>Neden Bu Çözüm?</span>
+              <h2 className={sectionStyles.title}>Hazır kalıplar yerine, markaya göre kurulan bir yapı.</h2>
+              <p className={sectionStyles.description}>
+                Burada amaç sadece güzel duran bir ekran üretmek değil. Markayı doğru anlatan, güven veren ve
+                gerektiğinde büyüyebilen bir sistem kurmak.
+              </p>
 
-          <m.div className={sectionStyles.grid} variants={sectionVariants.cards}>
-            {reasonItems.map((item) => {
-              const Icon = item.icon;
-
-              return (
-                <m.div key={item.title} className={sectionStyles.card} variants={sectionVariants.item}>
-                  <span className={sectionStyles.iconWrap}>
-                    <Icon className="h-5 w-5" />
-                  </span>
-                  <div className={sectionStyles.cardText}>
-                    <h3 className={sectionStyles.cardTitle}>{item.title}</h3>
-                    <p className={sectionStyles.cardDescription}>{item.text}</p>
+              <div className={sectionStyles.promiseList}>
+                {promiseItems.map((item) => (
+                  <div key={item.label} className={sectionStyles.promiseItem}>
+                    <span className={sectionStyles.promiseValue}>{item.value}</span>
+                    <span className={sectionStyles.promiseLabel}>{item.label}</span>
                   </div>
-                </m.div>
-              );
-            })}
-          </m.div>
+                ))}
+              </div>
+            </m.div>
+
+            <m.aside className={sectionStyles.panel} variants={sectionVariants.item}>
+              <div className={sectionStyles.panelHeader}>
+                <span className={sectionStyles.panelKicker}>Neler değişiyor?</span>
+                <p className={sectionStyles.panelTitle}>Her parça aynı yoğunlukta düşünülüyor.</p>
+              </div>
+
+              <div className={sectionStyles.reasonList}>
+                {reasonItems.map((item, index) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <m.article key={item.title} className={sectionStyles.reasonItem} variants={sectionVariants.item}>
+                      <span className={sectionStyles.reasonIndex}>{String(index + 1).padStart(2, "0")}</span>
+
+                      <span className={sectionStyles.reasonIconWrap}>
+                        <Icon className="h-5 w-5" />
+                      </span>
+
+                      <div className={sectionStyles.reasonText}>
+                        <h3 className={sectionStyles.reasonTitle}>{item.title}</h3>
+                        <p className={sectionStyles.reasonDescription}>{item.text}</p>
+                      </div>
+                    </m.article>
+                  );
+                })}
+              </div>
+            </m.aside>
+          </div>
         </div>
       </m.section>
     </LazyMotion>
@@ -72,22 +94,41 @@ export default function WhySection() {
 }
 
 const sectionStyles = {
-  shell: "py-6 md:py-8",
-  inner: "w-full",
-  header: "mx-auto flex max-w-3xl flex-col items-center text-center",
+  shell:
+    "relative isolate overflow-hidden bg-[#5d79b3] px-6 py-10 text-white before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.12)_0%,rgba(255,255,255,0)_42%)] before:content-[''] md:px-16 md:py-14",
+  inner: "relative z-10 mx-auto w-full max-w-[1440px]",
+  layout: "grid gap-8 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] xl:items-start",
+  copy: "max-w-3xl",
   kicker:
-    "inline-flex items-center rounded-full border border-slate-200 bg-white/85 px-3 py-2 text-sm font-medium text-slate-800 shadow-[0_10px_30px_rgba(8,17,31,0.08)]",
-  title: "mt-5 text-3xl font-semibold tracking-tight text-[#07101f] sm:text-4xl md:text-5xl",
-  description: "mt-5 max-w-2xl text-base leading-7 text-slate-600 md:text-lg",
-  grid: "mt-8 grid gap-3 md:mt-10 md:grid-cols-2 xl:grid-cols-4",
-  card:
-    "group flex items-start gap-4 rounded-lg border border-white/70 bg-white/85 p-4 shadow-[0_10px_28px_rgba(8,17,31,0.05)] transition duration-300 ease-out hover:-translate-y-0.5 hover:border-slate-200 hover:bg-white hover:shadow-[0_18px_40px_rgba(8,17,31,0.09)]",
-  iconWrap:
-    "flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-700 transition duration-300 ease-out group-hover:scale-105 group-hover:bg-emerald-100",
-  cardText: "flex min-w-0 flex-col",
-  cardTitle: "text-sm font-semibold text-[#07101f] transition duration-300 ease-out group-hover:text-emerald-800",
-  cardDescription: "mt-1 text-sm leading-6 text-slate-600 transition duration-300 ease-out group-hover:text-slate-700",
+    "inline-flex items-center rounded-full border border-white/15 bg-white/12 px-3 py-2 text-sm font-medium text-white/92 backdrop-blur-sm",
+  title: "mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl xl:text-[3.75rem] xl:leading-[0.95]",
+  description: "mt-5 max-w-2xl text-base leading-7 text-white/78 md:text-lg",
+  promiseList: "mt-8 grid gap-3 sm:grid-cols-3",
+  promiseItem:
+    "flex items-center gap-3 border border-white/12 bg-white/8 px-4 py-3 backdrop-blur-sm transition duration-300 ease-out hover:bg-white/12",
+  promiseValue:
+    "inline-flex h-9 w-9 shrink-0 items-center justify-center border border-white/15 bg-white/12 text-sm font-semibold text-white",
+  promiseLabel: "text-sm font-medium text-white/90",
+  panel:
+    "border border-white/15 bg-[#17315d]/74 p-5 shadow-[0_30px_70px_rgba(7,16,31,0.2)] backdrop-blur-sm md:p-6",
+  panelHeader: "flex flex-col gap-2 border-b border-white/12 pb-5",
+  panelKicker: "text-xs font-semibold uppercase tracking-[0.26em] text-white/55",
+  panelTitle: "text-lg font-semibold leading-7 text-white md:text-xl",
+  reasonList: "divide-y divide-white/12",
+  reasonItem: "grid grid-cols-[auto_auto_1fr] items-start gap-4 py-5 first:pt-0 last:pb-0",
+  reasonIndex: "mt-1 text-xs font-semibold uppercase tracking-[0.24em] text-white/48",
+  reasonIconWrap:
+    "flex h-11 w-11 shrink-0 items-center justify-center border border-white/15 bg-white/12 text-white",
+  reasonText: "flex min-w-0 flex-col",
+  reasonTitle: "text-sm font-semibold text-white",
+  reasonDescription: "mt-1 text-sm leading-6 text-white/72",
 } as const;
+
+const promiseItems = [
+  { value: "01", label: "Strateji" },
+  { value: "02", label: "Tasarım" },
+  { value: "03", label: "Kurulum" },
+] as const;
 
 const sectionVariants = {
   section: {
@@ -101,14 +142,6 @@ const sectionVariants = {
   },
   item: {
     hidden: { opacity: 0, y: 12 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.42, ease: "easeOut" as const } },
-  },
-  cards: {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.05,
-      },
-    },
+    show: { opacity: 1, y: 0, transition: { duration: 0.62, ease: "easeOut" as const } },
   },
 } satisfies Record<string, Variants>;

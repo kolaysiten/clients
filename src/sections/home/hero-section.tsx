@@ -140,7 +140,7 @@ export default function HeroSection() {
 }
 
 const heroStyles = {
-  shell: "py-6 md:py-8",
+  shell: "px-16 py-16 md:px-16 md:py-20",
   inner: "w-full",
   main: "grid gap-10 xl:grid-cols-[6fr_4fr] xl:items-center",
   content:
