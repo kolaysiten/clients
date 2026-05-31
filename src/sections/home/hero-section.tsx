@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowRight, Palette, Search, Smartphone, Zap } from "lucide-react";
+import { ArrowRight, FileCode2, Layers3, Palette, Smartphone } from "lucide-react";
 import { LazyMotion, domAnimation, m, type Variants } from "framer-motion";
 import { useMotionSettings } from "@/src/providers/motion-settings";
 import { LandingSection, WaveDivider } from "@/src/lib/landing-page";
@@ -32,23 +32,23 @@ const badgeItems = [
 const featureItems = [
   {
     icon: Palette,
-    title: "Markaya Özel",
-    text: "İhtiyaca göre hızlı ya da sıfırdan kurulum.",
+    title: "Özel Tasarım",
+    text: "İhtiyacınıza uygun sıfırdan kurulum.",
   },
   {
     icon: Smartphone,
     title: "Mobil Uyumlu",
-    text: "Tüm ekranlarda net ve rahat deneyim.",
+    text: "Tüm cihazlarda düzgün görünüm.",
   },
   {
-    icon: Zap,
-    title: "Hızlı Altyapı",
-    text: "Performans odaklı modern kurulum.",
+    icon: FileCode2,
+    title: "Kod Teslimi",
+    text: "Proje dosyalarıyla birlikte teslim.",
   },
   {
-    icon: Search,
-    title: "SEO Temeli",
-    text: "Arama motorları için düzenli yapı.",
+    icon: Layers3,
+    title: "Kolay Genişleme",
+    text: "Teslim sonrası ekleme mümkün.",
   },
 ];
 
@@ -88,14 +88,14 @@ export default function HeroSection() {
             <m.h1 className={heroStyles.title} variants={heroVariants.item}>
               <span className={heroStyles.titleLine}>İşletmeniz için</span>
               <span className={heroStyles.titleLine}>
-                <span className={heroStyles.titleAccent}>modern</span> web siteleri.
+                <span className={heroStyles.titleAccent}>özel</span> web siteleri.
               </span>
             </m.h1>
 
             <m.p className={heroStyles.description} variants={heroVariants.item}>
-              Markanızı dijitale taşıyor, kullanıcı dostu ve performans odaklı web siteleri geliştiriyoruz.
+              KolaySiten olarak, ihtiyacınıza göre tasarlanan ve modern teknolojilerle kodlanan web siteleri geliştiriyoruz.            
             </m.p>
-
+            
             <m.div className={heroStyles.actions} variants={heroVariants.item}>
               <a href="#paketler" className={heroStyles.secondaryAction}>
                 Paketleri İncele
