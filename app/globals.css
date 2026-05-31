@@ -17,6 +17,12 @@
   --site-header-guard-height: var(--site-content-top);
 }
 
+@media (max-width: 767px) {
+  :root {
+    --site-page-gutter: 8px; 
+  }
+}
+ 
 html { 
   min-width: 320px;
   background-color: var(--site-bg);
