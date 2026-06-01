@@ -4,7 +4,6 @@ import Image from "next/image";
 import { LazyMotion, domAnimation, m, type Variants } from "framer-motion";
 import whyMockup from "@/public/why-mockup1.png";
 import { LandingContent, LandingSection } from "@/src/lib/landing-page";
-import { useMotionSettings } from "@/src/providers/motion-settings";
 
 const whyItems = [
   {
@@ -22,17 +21,14 @@ const whyItems = [
 ] as const;
 
 export default function WhySection() {
-  const { motionEnabled } = useMotionSettings();
-
   return (
     <LandingSection className={styles.section} sectionBg="#5d79b3">
       <LazyMotion features={domAnimation}>
         <m.div
           className="w-full"
-          initial={motionEnabled ? "hidden" : false}
-          animate={motionEnabled ? undefined : "show"}
-          whileInView={motionEnabled ? "show" : undefined}
-          viewport={{ once: true, amount: 0.12 }}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.25 }}
           variants={whyVariants.section}
         >
           <LandingContent
