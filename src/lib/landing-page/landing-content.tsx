@@ -27,7 +27,7 @@ export default function LandingContent({
   const hasContent = sectionContent !== null && sectionContent !== undefined;
 
   return (
-    <div className={clsx("mx-auto flex w-fit max-w-full flex-col gap-8 xl:w-full xl:max-w-[1200px]", className)} {...props}>
+    <div className={clsx("mx-auto flex w-fit max-w-full flex-col gap-8 lg:w-full lg:max-w-[1200px]", className)} {...props}>
       <Title className={clsx("w-full", titleClassName)}>{title}</Title>
       {hasContent ? (
         <div className="w-full">

@@ -12,8 +12,8 @@ const whyItems = [
     secondLine: "veren web deneyimleri kuruyoruz.",
   },
   {
-    firstLine: "Sıfırdan, elle hazırlanmış, modern teknolojilerle",
-    secondLine: "kurulmuş ve büyümeye açık yapılar sunuyoruz.",
+    firstLine: "Sıfırdan hazırlanmış, modern altyapıyla",
+    secondLine: "büyümeye açık yapılar kuruyoruz.",
   },
   {
     firstLine: "Hız, mobil uyum ve temiz kod odağıyla",
@@ -71,22 +71,21 @@ export default function WhySection() {
 }
 
 const styles = {
-  section: "px-2 py-24 text-white min-[380px]:px-5 min-[380px]:py-28 sm:px-8 md:px-16 md:py-20 xl:py-32",
-  content: "gap-6 min-[380px]:gap-7",
+  section: "px-2 py-24 text-white min-[480px]:px-5 min-[480px]:py-28 sm:px-8 md:px-16 md:py-28 xl:py-32",
+  content: "gap-6 min-[480px]:gap-7",
   title:
-    "text-2xl font-semibold leading-[1.04] text-white min-[380px]:text-3xl sm:text-4xl md:text-5xl",
-  listWrap: "max-w-full xl:w-full",
-  contentGrid: "w-full xl:grid xl:grid-cols-2 xl:items-center xl:gap-12",
-  list: "flex w-full flex-col gap-2.5 min-[380px]:gap-3 xl:gap-4",
-  visual: "relative hidden min-h-[320px] items-start justify-end xl:flex",
+    "text-2xl font-semibold leading-[1.04] text-white min-[480px]:text-3xl sm:text-4xl md:text-5xl",
+  listWrap: "max-w-full lg:w-full",
+  contentGrid: "w-full lg:grid lg:grid-cols-2 lg:items-center lg:gap-12",
+  list: "flex w-full flex-col gap-2.5 min-[480px]:gap-3 lg:gap-4",
+  visual: "relative hidden min-h-[320px] items-start justify-end lg:flex",
   mockup: "h-auto w-full max-w-[483px] object-contain",
   item:
-    "flex items-start gap-2 rounded-lg border border-white/20 bg-white/10 px-2 py-3 shadow-[0_16px_34px_rgba(16,32,64,0.12)] backdrop-blur-sm min-[380px]:gap-3 min-[380px]:px-4 min-[380px]:py-4 xl:px-5 xl:py-5",
+    "flex items-start gap-2 rounded-lg border border-white/20 bg-white/10 px-1.5 py-3 shadow-[0_16px_34px_rgba(16,32,64,0.12)] backdrop-blur-sm min-[480px]:gap-3 min-[480px]:px-2 min-[480px]:py-4 lg:gap-3 lg:px-2.5 lg:py-5 xl:gap-3 xl:px-3 xl:py-6",
   bullet:
-    "mt-1.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-white/20 min-[380px]:h-5 min-[380px]:w-5",
-  bulletDot: "h-1.5 w-1.5 rounded-full bg-white min-[380px]:h-2 min-[380px]:w-2",
-  itemText:
-    "min-w-0 text-[10px] leading-5 text-white/90 min-[360px]:text-[11px] min-[380px]:text-[13px] min-[430px]:text-[15px] min-[430px]:leading-7 sm:text-base sm:leading-7 md:text-lg md:leading-8",
+    "mt-1.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-white/20 min-[480px]:h-5 min-[480px]:w-5 lg:h-5 lg:w-5 xl:h-5 xl:w-5",
+  bulletDot: "h-1.5 w-1.5 rounded-full bg-white min-[480px]:h-2 min-[480px]:w-2 lg:h-2 lg:w-2 xl:h-2 xl:w-2",
+  itemText: "min-w-0 text-base leading-6 text-white/90",
   itemLine: "block whitespace-nowrap",
 } as const;
 
