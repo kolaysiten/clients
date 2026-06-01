@@ -1,7 +1,7 @@
 "use client";
 
 import { MotionConfig } from "framer-motion";
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 type MotionSettingsValue = {
   motionEnabled: boolean;
@@ -16,9 +16,27 @@ export function MotionSettingsProvider({
   children: React.ReactNode;
   motionEnabled: boolean;
 }>) {
+  const [clientMotionEnabled, setClientMotionEnabled] = useState(motionEnabled);
+
+  useEffect(() => {
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce), (hover: none), (pointer: coarse)");
+    const updateMotionPreference = () => {
+      setClientMotionEnabled(motionEnabled && !motionQuery.matches);
+    };
+
+    updateMotionPreference();
+    motionQuery.addEventListener("change", updateMotionPreference);
+
+    return () => {
+      motionQuery.removeEventListener("change", updateMotionPreference);
+    };
+  }, [motionEnabled]);
+
   return (
-    <MotionConfig reducedMotion={motionEnabled ? "user" : "always"}>
-      <MotionSettingsContext.Provider value={{ motionEnabled }}>{children}</MotionSettingsContext.Provider>
+    <MotionConfig reducedMotion={clientMotionEnabled ? "user" : "always"}>
+      <MotionSettingsContext.Provider value={{ motionEnabled: clientMotionEnabled }}>
+        {children}
+      </MotionSettingsContext.Provider>
     </MotionConfig>
   );
 }

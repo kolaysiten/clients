@@ -32,10 +32,12 @@ export default function Header() {
 }
 
 const headerStyles = {
-  guard: "pointer-events-none fixed inset-x-0 top-0 z-40 h-[var(--site-header-guard-height)] bg-transparent",
+  guard:
+    "pointer-events-none fixed inset-x-0 top-0 z-40 h-[var(--site-header-guard-height)] bg-[var(--site-bg)] bg-[url('/peak_bg.png')] bg-cover bg-top bg-no-repeat",
   shell:
     "fixed left-1/2 top-[var(--site-header-top)] z-50 w-[min(calc(100vw-(var(--site-page-gutter)*2)),var(--site-content-max))] -translate-x-1/2",
-  inner: "grid h-16 w-full items-center overflow-hidden rounded-2xl border border-white/10 bg-[#08111f] px-4",
+  inner:
+    "grid h-[var(--site-header-height)] w-full items-center overflow-hidden rounded-2xl border border-white/10 bg-[#08111f]/94 px-4 shadow-[0_18px_40px_rgba(8,17,31,0.22)] backdrop-blur-md",
   mobileRow: "grid w-full grid-cols-[1fr_auto_1fr] items-center gap-2 md:hidden",
   mobileBanner: "justify-self-center",
   desktopBanner: "hidden md:flex md:justify-start",

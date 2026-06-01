@@ -9,7 +9,7 @@ export default async function MotionProvider({
   const requestHeaders = await headers();
   const userAgent = requestHeaders.get("user-agent") ?? "";
   const fetchDest = requestHeaders.get("sec-fetch-dest") ?? "";
-  const motionEnabled = !(isBotUserAgent(userAgent) || fetchDest === "iframe");
+  const motionEnabled = !(isBotUserAgent(userAgent) || isLikelyTouchUserAgent(userAgent) || fetchDest === "iframe");
 
   return <MotionSettingsProvider motionEnabled={motionEnabled}>{children}</MotionSettingsProvider>;
 }
@@ -18,4 +18,8 @@ function isBotUserAgent(userAgent: string) {
   return /bot|crawler|spider|slurp|bingpreview|facebookexternalhit|twitterbot|discordbot|linkedinbot|embedly|preview/i.test(
     userAgent,
   );
+}
+
+function isLikelyTouchUserAgent(userAgent: string) {
+  return /android|iphone|ipad|ipod|mobile|tablet|kindle|silk|playbook/i.test(userAgent);
 }
