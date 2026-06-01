@@ -111,7 +111,7 @@ export default function HeroSection() {
             </m.h1>
 
             <m.p className={heroStyles.description} custom={7} variants={heroVariants.item}>
-              KolaySiten olarak, ihtiyacınıza göre tasarlanan ve modern teknolojilerle kodlanan web siteleri geliştiriyoruz.
+              KolaySiten olarak, ihtiyacınıza göre şekillenen ve modern teknolojilerle geliştirilen web siteleri hazırlıyoruz.
             </m.p>
 
             <m.div className={heroStyles.actions} variants={heroVariants.group}>
