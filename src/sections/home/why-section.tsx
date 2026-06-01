@@ -72,13 +72,13 @@ const styles = {
   content: "gap-6 min-[480px]:gap-7",
   title:
     "text-2xl font-semibold leading-[1.04] text-white min-[480px]:text-3xl sm:text-4xl md:text-5xl",
-  listWrap: "max-w-full lg:w-full",
-  contentGrid: "w-full lg:grid lg:grid-cols-2 lg:items-center lg:gap-12",
+  listWrap: "max-w-full w-full lg:w-full",
+  contentGrid: "w-full flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:items-center lg:gap-12",
   list: "flex w-full flex-col gap-2.5 min-[420px]:gap-3 min-[480px]:gap-3.5 lg:gap-4",
   visual: "relative hidden min-h-[320px] items-start justify-end lg:flex",
   mockup: "h-auto w-full max-w-[483px] object-contain",
   item:
-    "flex items-start gap-2 rounded-lg border border-white/20 bg-white/10 px-1.5 py-3 shadow-[0_16px_34px_rgba(16,32,64,0.12)] backdrop-blur-sm min-[420px]:gap-2.5 min-[420px]:px-2 min-[420px]:py-3.5 min-[480px]:gap-3 min-[480px]:px-2 min-[480px]:py-4 lg:gap-3 lg:px-2.5 lg:py-5 xl:gap-3 xl:px-3 xl:py-6",
+    "flex w-full items-start gap-2 rounded-lg border border-white/20 bg-white/10 px-1.5 py-3 shadow-[0_16px_34px_rgba(16,32,64,0.12)] backdrop-blur-sm min-[420px]:gap-2.5 min-[420px]:px-2 min-[420px]:py-3.5 min-[480px]:gap-3 min-[480px]:px-2 min-[480px]:py-4 lg:gap-3 lg:px-2.5 lg:py-5 xl:gap-3 xl:px-3 xl:py-6",
   bullet:
     "mt-1.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-white/20 min-[420px]:h-4 min-[420px]:w-4 min-[480px]:h-5 min-[480px]:w-5 lg:h-5 lg:w-5 xl:h-5 xl:w-5",
   bulletDot: "h-1.5 w-1.5 rounded-full bg-white min-[420px]:h-1.5 min-[420px]:w-1.5 min-[480px]:h-2 min-[480px]:w-2 lg:h-2 lg:w-2 xl:h-2 xl:w-2",
