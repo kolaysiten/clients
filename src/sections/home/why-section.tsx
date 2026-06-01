@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+import mockup from "@/public/why-mockup1.png";
 import { LandingSection } from "@/src/lib/landing-page";
 
 const subtitleItems = [
@@ -42,33 +44,7 @@ export default function WhySection() {
               </div>
             </div>
             <div className={sectionStyles.visual} aria-hidden="true">
-              <div className={sectionStyles.mockupShell}>
-                <div className={sectionStyles.mockupTopbar}>
-                  <span className={sectionStyles.mockupDot} />
-                  <span className={sectionStyles.mockupDot} />
-                  <span className={sectionStyles.mockupDot} />
-                </div>
-                <div className={sectionStyles.mockupHero}>
-                  <span className={sectionStyles.mockupHeroLineLarge} />
-                  <span className={sectionStyles.mockupHeroLineSmall} />
-                </div>
-                <div className={sectionStyles.mockupGrid}>
-                  <span className={sectionStyles.mockupTile} />
-                  <span className={sectionStyles.mockupTile} />
-                  <span className={sectionStyles.mockupTile} />
-                </div>
-              </div>
-              <div className={sectionStyles.mockupPanel}>
-                <span className={sectionStyles.mockupPanelBar} />
-                <span className={sectionStyles.mockupPanelLine} />
-                <span className={sectionStyles.mockupPanelLineShort} />
-              </div>
-              <div className={sectionStyles.mockupPhone}>
-                <span className={sectionStyles.mockupPhoneNotch} />
-                <span className={sectionStyles.mockupPhoneBlock} />
-                <span className={sectionStyles.mockupPhoneLine} />
-                <span className={sectionStyles.mockupPhoneLineShort} />
-              </div>
+              <Image src={mockup} alt="" className={sectionStyles.mockupImage} priority={false} />
             </div>
           </div>
         </div>
@@ -93,27 +69,6 @@ const sectionStyles = {
   subtitleLine: "block whitespace-nowrap",
   subtitleLineSpaced: "mt-1",
   subtitleBullet: "inline-block w-4 text-white/62",
-  visual: "relative hidden min-h-[384px] xl:block xl:w-1/2",
-  mockupShell:
-    "absolute right-4 top-6 w-[430px] overflow-hidden rounded-2xl border border-white/28 bg-white/18 shadow-[0_28px_80px_rgba(8,17,31,0.18)] backdrop-blur-md",
-  mockupTopbar:
-    "flex h-11 items-center gap-2 border-b border-white/18 bg-white/16 px-5",
-  mockupDot: "h-2.5 w-2.5 rounded-full bg-white/45",
-  mockupHero: "flex flex-col gap-4 px-7 py-8",
-  mockupHeroLineLarge: "h-5 w-64 rounded-full bg-white/78",
-  mockupHeroLineSmall: "h-3 w-48 rounded-full bg-white/42",
-  mockupGrid: "grid grid-cols-3 gap-4 px-7 pb-7",
-  mockupTile:
-    "h-24 rounded-xl border border-white/20 bg-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.18)]",
-  mockupPanel:
-    "absolute right-0 top-56 flex w-56 flex-col gap-3 rounded-2xl border border-white/28 bg-[#eef6ff]/90 p-5 shadow-[0_22px_55px_rgba(8,17,31,0.18)]",
-  mockupPanelBar: "h-3 w-24 rounded-full bg-[#5d79b3]/55",
-  mockupPanelLine: "h-2.5 w-full rounded-full bg-[#5d79b3]/25",
-  mockupPanelLineShort: "h-2.5 w-32 rounded-full bg-[#5d79b3]/20",
-  mockupPhone:
-    "absolute left-16 top-32 flex h-64 w-32 flex-col items-center gap-3 rounded-[1.75rem] border border-white/30 bg-white/22 px-4 py-5 shadow-[0_24px_65px_rgba(8,17,31,0.2)] backdrop-blur-md",
-  mockupPhoneNotch: "h-1.5 w-10 rounded-full bg-white/52",
-  mockupPhoneBlock: "mt-3 h-20 w-full rounded-2xl bg-white/32",
-  mockupPhoneLine: "h-2.5 w-full rounded-full bg-white/58",
-  mockupPhoneLineShort: "h-2.5 w-16 rounded-full bg-white/38",
+  visual: "relative hidden min-h-[390px] xl:flex xl:w-1/2 xl:items-start xl:justify-end",
+  mockupImage: "h-auto w-[483px] object-contain",
 } as const;
