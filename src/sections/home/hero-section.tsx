@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ArrowRight, FileCode2, Layers3, Palette, Smartphone } from "lucide-react";
 import { LazyMotion, domAnimation, m, type Variants } from "framer-motion";
+import { useEffect, useState } from "react";
 import { useMotionSettings } from "@/src/providers/motion-settings";
 import { LandingSection, WaveDivider } from "@/src/lib/landing-page";
 
@@ -54,6 +55,19 @@ const featureItems = [
 
 export default function HeroSection() {
   const { motionEnabled } = useMotionSettings();
+  const [isMdUp, setIsMdUp] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const update = () => setIsMdUp(mediaQuery.matches);
+
+    update();
+    mediaQuery.addEventListener("change", update);
+
+    return () => {
+      mediaQuery.removeEventListener("change", update);
+    };
+  }, []);
 
   return (
     <LandingSection className={heroStyles.section} sectionBg="var(--site-surface)"
@@ -73,37 +87,51 @@ export default function HeroSection() {
           variants={heroVariants.section}
         >
           <div className={heroStyles.content}>
-            <m.div className={heroStyles.badgeGrid} variants={heroVariants.item} aria-label="Öne çıkan özellikler">
+            <m.div className={heroStyles.badgeGrid} variants={heroVariants.group} aria-label="Öne çıkan özellikler">
               {badgeItems.map((item, index) => (
-                <span
+                <m.span
                   key={item.label}
                   className={`${index < 2 ? heroStyles.badgeWide : heroStyles.badgeSmall} ${heroStyles.badgeBase}`}
+                  custom={index}
+                  variants={heroVariants.item}
                 >
                   <span className={`${heroStyles.badgeDot} ${item.dotClass}`} />
                   <span className={heroStyles.badgeText}>{item.label}</span>
-                </span>
+                </m.span>
               ))}
             </m.div>
 
-            <m.h1 className={heroStyles.title} variants={heroVariants.item}>
-              <span className={heroStyles.titleLine}>İşletmeniz için</span>
-              <span className={heroStyles.titleLine}>
+            <m.h1 className={heroStyles.title} variants={heroVariants.group}>
+              <m.span className={heroStyles.titleLine} custom={5} variants={heroVariants.item}>
+                İşletmeniz için
+              </m.span>
+              <m.span className={heroStyles.titleLine} custom={6} variants={heroVariants.item}>
                 <span className={heroStyles.titleAccent}>özel</span> web siteleri.
-              </span>
+              </m.span>
             </m.h1>
 
-            <m.p className={heroStyles.description} variants={heroVariants.item}>
-              KolaySiten olarak, ihtiyacınıza göre tasarlanan ve modern teknolojilerle kodlanan web siteleri geliştiriyoruz.            
+            <m.p className={heroStyles.description} custom={7} variants={heroVariants.item}>
+              KolaySiten olarak, ihtiyacınıza göre tasarlanan ve modern teknolojilerle kodlanan web siteleri geliştiriyoruz.
             </m.p>
-            
-            <m.div className={heroStyles.actions} variants={heroVariants.item}>
-              <a href="#paketler" className={heroStyles.secondaryAction}>
+
+            <m.div className={heroStyles.actions} variants={heroVariants.group}>
+              <m.a
+                href="#paketler"
+                className={heroStyles.secondaryAction}
+                custom={{ step: 8, axis: isMdUp ? "x-left" : "y" }}
+                variants={heroVariants.cta}
+              >
                 Paketleri İncele
-              </a>
-              <a href="#iletisim" className={heroStyles.primaryAction}>
+              </m.a>
+              <m.a
+                href="#iletisim"
+                className={heroStyles.primaryAction}
+                custom={{ step: 9, axis: isMdUp ? "x-right" : "y" }}
+                variants={heroVariants.cta}
+              >
                 Teklif Al
                 <ArrowRight className="h-4 w-4" />
-              </a>
+              </m.a>
             </m.div>
           </div>
 
@@ -112,6 +140,7 @@ export default function HeroSection() {
             variants={heroVariants.visual}
             aria-hidden="true"
             initial={motionEnabled ? undefined : false}
+            custom={10}
           >
             <Image src="/hero-mockup3.png" alt="" width={465} height={465} priority className={heroStyles.artwork} />
           </m.div>
@@ -123,11 +152,11 @@ export default function HeroSection() {
           animate="show"
           variants={heroVariants.features}
         >
-          {featureItems.map((item) => {
+          {featureItems.map((item, index) => {
             const Icon = item.icon;
 
             return (
-              <m.div key={item.title} className={heroStyles.featureCard} variants={heroVariants.item}>
+              <m.div key={item.title} className={heroStyles.featureCard} custom={11 + index} variants={heroVariants.item}>
                 <span className={heroStyles.featureIcon}>
                   <Icon className="h-5 w-5" />
                 </span>
@@ -180,29 +209,49 @@ const heroStyles = {
 };
 
 const heroVariants = {
-  section: {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.07,
-        delayChildren: 0.04,
-      },
-    },
-  },
+  section: { hidden: {}, show: {} },
+  group: { hidden: {}, show: {} },
   item: {
     hidden: { opacity: 0, y: 12 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.42, ease: "easeOut" as const } },
+    show: (step = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.06 + step * 0.09,
+        duration: 0.5,
+        ease: "easeOut" as const,
+      },
+    }),
+  },
+  cta: {
+    hidden: () => ({
+      opacity: 0,
+      x: 0,
+      y: 0,
+    }),
+    show: (custom?: { step?: number }) => ({
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: {
+        delay: 0.06 + (custom?.step ?? 0) * 0.09,
+        duration: 0.42,
+        ease: "easeOut" as const,
+      },
+    }),
   },
   visual: {
-    hidden: { opacity: 0, y: 18 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
-  },
-  features: {
-    hidden: {},
-    show: {
+    hidden: { opacity: 0, y: 16, scale: 0.985 },
+    show: (step = 0) => ({
+      opacity: 1,
+      y: 0,
+      scale: 1,
       transition: {
-        staggerChildren: 0.05,
+        delay: 0.06 + step * 0.09,
+        duration: 0.68,
+        ease: "easeOut" as const,
       },
-    },
+    }),
   },
+  features: { hidden: {}, show: {} },
 } satisfies Record<string, Variants>;
