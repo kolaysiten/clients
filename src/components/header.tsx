@@ -33,7 +33,7 @@ export default function Header() {
 
 const headerStyles = {
   guard:
-    "pointer-events-none fixed inset-x-0 top-0 z-40 h-[var(--site-header-guard-height)] bg-[var(--site-bg)] bg-[url('/peak_bg.png')] bg-cover bg-top bg-no-repeat",
+    "pointer-events-none fixed inset-x-0 -top-24 -bottom-24 z-40 transform-gpu bg-[url('/peak_bg.png')] bg-cover bg-top bg-no-repeat will-change-transform [clip-path:inset(6rem_0_calc(100%_-_6rem_-_var(--site-header-guard-height))_0)]",
   shell:
     "fixed left-1/2 top-[var(--site-header-top)] z-50 w-[min(calc(100vw-(var(--site-page-gutter)*2)),var(--site-content-max))] -translate-x-1/2",
   inner:
