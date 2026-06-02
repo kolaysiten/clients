@@ -33,7 +33,7 @@ html {
 
 body { 
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 100lvh;
   background-color: var(--site-bg);
   color: var(--site-text);
   overflow-x: hidden;

@@ -92,8 +92,7 @@ const whyVariants = {
     hidden: {},
     show: {
       transition: {
-        staggerChildren: 0.18,
-        delayChildren: 0.1,
+        delayChildren: 0.16,
       },
     },
   },
@@ -103,7 +102,8 @@ const whyVariants = {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.62,
+        duration: 0.7,
+        delay: 0.06,
         ease: "easeOut" as const,
       },
     },
@@ -112,8 +112,7 @@ const whyVariants = {
     hidden: {},
     show: {
       transition: {
-        staggerChildren: 0.24,
-        delayChildren: 0.12,
+        delayChildren: 0.52,
       },
     },
   },
@@ -121,8 +120,8 @@ const whyVariants = {
     hidden: {},
     show: {
       transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.04,
+        staggerChildren: 0.18,
+        delayChildren: 0.14,
       },
     },
   },
@@ -132,7 +131,7 @@ const whyVariants = {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.56,
+        duration: 0.72,
         ease: "easeOut" as const,
       },
     },

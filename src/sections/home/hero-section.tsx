@@ -64,7 +64,7 @@ export default function HeroSection() {
           content: <WaveDivider flip={true} />,
           layout: "outter",
           size: "80px",
-        }
+        },
       }}
     >
       <div className={heroStyles.inner}>
@@ -75,13 +75,12 @@ export default function HeroSection() {
             animate="show"
             variants={heroVariants.section}
           >
-            <div className={heroStyles.content}>
+            <m.div className={heroStyles.content} variants={heroVariants.content}>
               <m.div className={heroStyles.badgeGrid} variants={heroVariants.group} aria-label="Öne çıkan özellikler">
                 {badgeItems.map((item, index) => (
                   <m.span
                     key={item.label}
                     className={`${index < 2 ? heroStyles.badgeWide : heroStyles.badgeSmall} ${heroStyles.badgeBase}`}
-                    custom={index}
                     variants={heroVariants.item}
                   >
                     <span className={`${heroStyles.badgeDot} ${item.dotClass}`} />
@@ -91,35 +90,33 @@ export default function HeroSection() {
               </m.div>
 
               <m.h1 className={heroStyles.title} variants={heroVariants.group}>
-                <m.span className={heroStyles.titleLine} custom={5} variants={heroVariants.item}>
+                <m.span className={heroStyles.titleLine} variants={heroVariants.item}>
                   İşletmeniz için
                 </m.span>
-                <m.span className={heroStyles.titleLine} custom={6} variants={heroVariants.item}>
+                <m.span className={heroStyles.titleLine} variants={heroVariants.item}>
                   <span className={heroStyles.titleAccent}>özel</span> web siteleri.
                 </m.span>
               </m.h1>
 
-              <m.p className={heroStyles.description} custom={7} variants={heroVariants.item}>
+              <m.p className={heroStyles.description} variants={heroVariants.item}>
                 KolaySiten olarak, ihtiyacınıza göre şekillenen sıfırdan modern web siteleri hazırlıyoruz.
               </m.p>
 
               <m.div className={heroStyles.actions} variants={heroVariants.group}>
-                <m.a href="#paketler" className={heroStyles.secondaryAction} custom={8} variants={heroVariants.cta}>
+                <m.a href="#paketler" className={heroStyles.secondaryAction} variants={heroVariants.cta}>
                   Paketleri İncele
                 </m.a>
-                <m.a href="#iletisim" className={heroStyles.primaryAction} custom={9} variants={heroVariants.cta}>
+                <m.a href="#iletisim" className={heroStyles.primaryAction} variants={heroVariants.cta}>
                   Teklif Al
                   <ArrowRight className="h-4 w-4" />
                 </m.a>
               </m.div>
-            </div>
+            </m.div>
 
             <m.div
               className={heroStyles.visual}
               variants={heroVariants.visual}
               aria-hidden="true"
-              initial={motionEnabled ? undefined : false}
-              custom={10}
             >
               <Image src="/hero-mockup3.png" alt="" width={465} height={465} priority className={heroStyles.artwork} />
             </m.div>
@@ -129,18 +126,13 @@ export default function HeroSection() {
             className={heroStyles.features}
             initial={motionEnabled ? "hidden" : false}
             animate="show"
-            variants={heroVariants.group}
+            variants={heroVariants.features}
           >
-            {featureItems.map((item, index) => {
+            {featureItems.map((item) => {
               const Icon = item.icon;
 
               return (
-                <m.div
-                  key={item.title}
-                  className={heroStyles.featureCard}
-                  custom={11 + index}
-                  variants={heroVariants.item}
-                >
+                <m.div key={item.title} className={heroStyles.featureCard} variants={heroVariants.featureItem}>
                   <span className={heroStyles.featureIcon}>
                     <Icon className="h-5 w-5" />
                   </span>
@@ -197,46 +189,82 @@ const heroStyles = {
 };
 
 const heroVariants = {
-  section: { hidden: {}, show: {} },
-  group: { hidden: {}, show: {} },
+  section: {
+    hidden: {},
+    show: {
+      transition: {
+        delayChildren: 0.06,
+        staggerChildren: 0.18,
+      },
+    },
+  },
+  content: {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.14,
+      },
+    },
+  },
+  group: {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.09,
+      },
+    },
+  },
   item: {
     hidden: { opacity: 0, y: 12 },
-    show: (step = 0) => ({
+    show: {
       opacity: 1,
       y: 0,
       transition: {
-        delay: 0.06 + step * 0.09,
         duration: 0.5,
         ease: "easeOut" as const,
       },
-    }),
+    },
   },
   cta: {
-    hidden: {
-      opacity: 0,
-      y: 8,
-    },
-    show: (step = 0) => ({
+    hidden: { opacity: 0 },
+    show: {
       opacity: 1,
-      y: 0,
       transition: {
-        delay: 0.06 + step * 0.09,
         duration: 0.42,
         ease: "easeOut" as const,
       },
-    }),
+    },
   },
   visual: {
     hidden: { opacity: 0, y: 16, scale: 0.985 },
-    show: (step = 0) => ({
+    show: {
       opacity: 1,
       y: 0,
       scale: 1,
       transition: {
-        delay: 0.06 + step * 0.09,
         duration: 0.68,
         ease: "easeOut" as const,
       },
-    }),
+    },
+  },
+  features: {
+    hidden: {},
+    show: {
+      transition: {
+        delayChildren: 0.8,
+        staggerChildren: 0.12,
+      },
+    },
+  },
+  featureItem: {
+    hidden: { opacity: 0, y: 12 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut" as const,
+      },
+    },
   },
 } satisfies Record<string, Variants>;

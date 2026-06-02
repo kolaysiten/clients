@@ -14,6 +14,6 @@ export default function Page() {
 }
 
 const pageStyles = {
-  shell: "relative min-h-[calc(100svh-var(--site-content-top)-var(--site-page-gutter))] overflow-hidden",
+  shell: "relative min-h-[calc(100lvh-var(--site-content-top)-var(--site-page-gutter))] overflow-hidden",
   content: "relative z-10 w-full",
 };
