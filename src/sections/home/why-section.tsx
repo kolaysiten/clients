@@ -68,7 +68,7 @@ export default function WhySection() {
 }
 
 const styles = {
-  section: "px-2 py-24 pt-36 text-white min-[480px]:px-5 min-[480px]:py-28 min-[480px]:pt-40 sm:px-8 md:px-16 md:py-28 md:pt-40 xl:py-32 xl:pt-44",
+  section: "px-5 py-24 pt-36 text-white min-[480px]:py-28 min-[480px]:pt-40 sm:px-8 md:px-16 md:py-28 md:pt-40 lg:px-16 xl:py-32 xl:pt-44",
   content: "gap-6 min-[480px]:gap-7",
   title:
     "text-2xl font-semibold leading-[1.04] text-white min-[480px]:text-3xl sm:text-4xl md:text-5xl",

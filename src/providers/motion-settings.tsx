@@ -19,7 +19,7 @@ export function MotionSettingsProvider({
   const [clientMotionEnabled, setClientMotionEnabled] = useState(motionEnabled);
 
   useEffect(() => {
-    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce), (hover: none), (pointer: coarse)");
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const updateMotionPreference = () => {
       setClientMotionEnabled(motionEnabled && !motionQuery.matches);
     };
