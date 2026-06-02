@@ -76,41 +76,40 @@ export default function HeroSection() {
             variants={heroVariants.section}
           >
             <m.div className={heroStyles.content} variants={heroVariants.content}>
-              <m.div className={heroStyles.badgeGrid} variants={heroVariants.group} aria-label="Öne çıkan özellikler">
+              <div className={heroStyles.badgeGrid} aria-label="Öne çıkan özellikler">
                 {badgeItems.map((item, index) => (
-                  <m.span
+                  <span
                     key={item.label}
                     className={`${index < 2 ? heroStyles.badgeWide : heroStyles.badgeSmall} ${heroStyles.badgeBase}`}
-                    variants={heroVariants.item}
                   >
                     <span className={`${heroStyles.badgeDot} ${item.dotClass}`} />
                     <span className={heroStyles.badgeText}>{item.label}</span>
-                  </m.span>
+                  </span>
                 ))}
-              </m.div>
+              </div>
 
-              <m.h1 className={heroStyles.title} variants={heroVariants.group}>
-                <m.span className={heroStyles.titleLine} variants={heroVariants.item}>
+              <h1 className={heroStyles.title}>
+                <span className={heroStyles.titleLine}>
                   İşletmeniz için
-                </m.span>
-                <m.span className={heroStyles.titleLine} variants={heroVariants.item}>
+                </span>
+                <span className={heroStyles.titleLine}>
                   <span className={heroStyles.titleAccent}>özel</span> web siteleri.
-                </m.span>
-              </m.h1>
+                </span>
+              </h1>
 
-              <m.p className={heroStyles.description} variants={heroVariants.item}>
+              <p className={heroStyles.description}>
                 KolaySiten olarak, ihtiyacınıza göre şekillenen sıfırdan modern web siteleri hazırlıyoruz.
-              </m.p>
+              </p>
 
-              <m.div className={heroStyles.actions} variants={heroVariants.group}>
-                <m.a href="#paketler" className={heroStyles.secondaryAction} variants={heroVariants.cta}>
+              <div className={heroStyles.actions}>
+                <a href="#paketler" className={heroStyles.secondaryAction}>
                   Paketleri İncele
-                </m.a>
-                <m.a href="#iletisim" className={heroStyles.primaryAction} variants={heroVariants.cta}>
+                </a>
+                <a href="#iletisim" className={heroStyles.primaryAction}>
                   Teklif Al
                   <ArrowRight className="h-4 w-4" />
-                </m.a>
-              </m.div>
+                </a>
+              </div>
             </m.div>
 
             <m.div
@@ -193,53 +192,27 @@ const heroVariants = {
     hidden: {},
     show: {
       transition: {
-        delayChildren: 0.06,
-        staggerChildren: 0.18,
+        delayChildren: 0.12,
+        staggerChildren: 0.16,
       },
     },
   },
   content: {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.14,
-      },
-    },
-  },
-  group: {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.09,
-      },
-    },
-  },
-  item: {
-    hidden: { opacity: 0, y: 12 },
+    hidden: { opacity: 0, y: 28 },
     show: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5,
-        ease: "easeOut" as const,
-      },
-    },
-  },
-  cta: {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        duration: 0.42,
+        duration: 0.66,
         ease: "easeOut" as const,
       },
     },
   },
   visual: {
-    hidden: { opacity: 0, y: 16, scale: 0.985 },
+    hidden: { opacity: 0, x: 36, scale: 0.985 },
     show: {
       opacity: 1,
-      y: 0,
+      x: 0,
       scale: 1,
       transition: {
         duration: 0.68,
@@ -257,12 +230,13 @@ const heroVariants = {
     },
   },
   featureItem: {
-    hidden: { opacity: 0, y: 12 },
+    hidden: { opacity: 0, y: 18, scale: 0.985 },
     show: {
       opacity: 1,
       y: 0,
+      scale: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.54,
         ease: "easeOut" as const,
       },
     },
