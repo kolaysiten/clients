@@ -25,5 +25,5 @@ export default function RootLayout({
 
 const layoutStyles = {
   background:
-    "pointer-events-none fixed inset-0 z-0 bg-[url('/peak_bg.png')] bg-cover bg-top bg-no-repeat",
+    "pointer-events-none fixed inset-x-0 -top-24 -bottom-24 z-0 transform-gpu bg-[url('/peak_bg.png')] bg-cover bg-top bg-no-repeat will-change-transform",
 };
